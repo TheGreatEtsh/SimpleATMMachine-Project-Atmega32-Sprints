@@ -6,6 +6,8 @@ APP\app.c
 
 ECUAL\eeprom\eeprom.c
 
+ECUAL\lcd\LCD.c
+
 ECUAL\trigger\trigger.c
 
 main.c

@@ -41,7 +41,7 @@ u8 I2C_readWithACK(void)
 	 */ 
     TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
     /* Wait for TWINT flag set in TWCR Register (data received successfully) */
-    while(!READ_BIT(TWCR,TWINT));
+    while(!GET_BIT(TWCR,TWINT));
     /* Read Data */
     return TWDR;
 }
@@ -53,7 +53,7 @@ u8 I2C_readWithNACK(void)
 	 */
     TWCR = (1 << TWINT) | (1 << TWEN);
     /* Wait for TWINT flag set in TWCR Register (data received successfully) */
-    while(!READ_BIT(TWCR,TWINT));
+    while(!GET_BIT(TWCR,TWINT));
     /* Read Data */
     return TWDR;
 }

@@ -9,9 +9,11 @@
 #define APP_H_
 #include "../MCAL/uart/uart.h"
 
-#include "../MCAL/i2c/i2c.h"
+#include "../MCAL/i2c/i2c.h" 
+#include "../ECUAL/lcd/LCD_Interface.h"
 
-
+void app_init (void);
+ void I2C_TEST (void);
 
 
 #endif /* APP_H_ */

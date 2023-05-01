@@ -9,8 +9,8 @@
 
 int main(void)
 {
-UART_Init();	
- I2C_init();
+app_init();
+I2C_TEST();
     /* Replace with your application code */
     while (1) 
     {
