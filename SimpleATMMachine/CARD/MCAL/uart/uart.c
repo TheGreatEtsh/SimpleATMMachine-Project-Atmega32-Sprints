@@ -46,3 +46,36 @@ u8 UART_GetChar(void)
 
 }
 
+
+void UART_sendString(u8 *str)
+{
+	u8 i=0;
+
+
+	while(str[i]!='\0')
+	{
+		UART_sendByte(str[i]);
+		i++;
+
+	}
+
+
+
+}
+u8* UART_recieveString()
+{
+	u8* str2;
+	u8 i=0;
+
+
+	do    //???????????????
+	{
+		UART_recieveByte(str2[i]);
+		i++;
+
+	}while(str2[i]!=0);
+
+
+	return str2;
+
+}
