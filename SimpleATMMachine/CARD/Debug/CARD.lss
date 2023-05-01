@@ -1,0 +1,641 @@
+
+CARD.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         00000364  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         00000000  00800060  00800060  000003d8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss          0000001f  00800060  00800060  000003d8  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000003d8  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000408  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000d0  00000000  00000000  00000444  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000dff  00000000  00000000  00000514  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000794  00000000  00000000  00001313  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000009a3  00000000  00000000  00001aa7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000208  00000000  00000000  0000244c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000006a2  00000000  00000000  00002654  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000d17  00000000  00000000  00002cf6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000b8  00000000  00000000  00003a0d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   8:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+   c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  10:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  14:	0c 94 5b 01 	jmp	0x2b6	; 0x2b6 <__vector_5>
+  18:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  1c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  20:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  24:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  28:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  2c:	0c 94 ca 00 	jmp	0x194	; 0x194 <__vector_11>
+  30:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  34:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  38:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  3c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  40:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  44:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  48:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  4c:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+  50:	0c 94 3c 00 	jmp	0x78	; 0x78 <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_clear_bss>:
+  60:	20 e0       	ldi	r18, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	01 c0       	rjmp	.+2      	; 0x6a <.do_clear_bss_start>
+
+00000068 <.do_clear_bss_loop>:
+  68:	1d 92       	st	X+, r1
+
+0000006a <.do_clear_bss_start>:
+  6a:	af 37       	cpi	r26, 0x7F	; 127
+  6c:	b2 07       	cpc	r27, r18
+  6e:	e1 f7       	brne	.-8      	; 0x68 <.do_clear_bss_loop>
+  70:	0e 94 3e 00 	call	0x7c	; 0x7c <main>
+  74:	0c 94 b0 01 	jmp	0x360	; 0x360 <_exit>
+
+00000078 <__bad_interrupt>:
+  78:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+0000007c <main>:
+ */ 
+
+
+
+int main(void)
+{
+  7c:	ff cf       	rjmp	.-2      	; 0x7c <main>
+
+0000007e <DIO_write>:
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+	if (u8_a_pinNumber < 8)
+  7e:	68 30       	cpi	r22, 0x08	; 8
+  80:	08 f0       	brcs	.+2      	; 0x84 <DIO_write+0x6>
+  82:	80 c0       	rjmp	.+256    	; 0x184 <DIO_write+0x106>
+	{
+		switch(u8_a_value)
+  84:	44 23       	and	r20, r20
+  86:	21 f0       	breq	.+8      	; 0x90 <DIO_write+0x12>
+  88:	41 30       	cpi	r20, 0x01	; 1
+  8a:	09 f4       	brne	.+2      	; 0x8e <DIO_write+0x10>
+  8c:	40 c0       	rjmp	.+128    	; 0x10e <DIO_write+0x90>
+  8e:	7c c0       	rjmp	.+248    	; 0x188 <DIO_write+0x10a>
+		{
+			case LOW:
+			switch(u8_a_portNumber)
+  90:	82 34       	cpi	r24, 0x42	; 66
+  92:	b1 f0       	breq	.+44     	; 0xc0 <DIO_write+0x42>
+  94:	18 f4       	brcc	.+6      	; 0x9c <DIO_write+0x1e>
+  96:	81 34       	cpi	r24, 0x41	; 65
+  98:	31 f0       	breq	.+12     	; 0xa6 <DIO_write+0x28>
+  9a:	78 c0       	rjmp	.+240    	; 0x18c <DIO_write+0x10e>
+  9c:	83 34       	cpi	r24, 0x43	; 67
+  9e:	e9 f0       	breq	.+58     	; 0xda <DIO_write+0x5c>
+  a0:	84 34       	cpi	r24, 0x44	; 68
+  a2:	41 f1       	breq	.+80     	; 0xf4 <DIO_write+0x76>
+  a4:	73 c0       	rjmp	.+230    	; 0x18c <DIO_write+0x10e>
+			{
+				case PORT_A:	PORTA &= ~ (1<<u8_a_pinNumber);		break;
+  a6:	2b b3       	in	r18, 0x1b	; 27
+  a8:	81 e0       	ldi	r24, 0x01	; 1
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	02 c0       	rjmp	.+4      	; 0xb2 <DIO_write+0x34>
+  ae:	88 0f       	add	r24, r24
+  b0:	99 1f       	adc	r25, r25
+  b2:	6a 95       	dec	r22
+  b4:	e2 f7       	brpl	.-8      	; 0xae <DIO_write+0x30>
+  b6:	80 95       	com	r24
+  b8:	82 23       	and	r24, r18
+  ba:	8b bb       	out	0x1b, r24	; 27
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+  bc:	80 e0       	ldi	r24, 0x00	; 0
+		switch(u8_a_value)
+		{
+			case LOW:
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA &= ~ (1<<u8_a_pinNumber);		break;
+  be:	08 95       	ret
+				case PORT_B:	PORTB &= ~ (1<<u8_a_pinNumber);		break;
+  c0:	28 b3       	in	r18, 0x18	; 24
+  c2:	81 e0       	ldi	r24, 0x01	; 1
+  c4:	90 e0       	ldi	r25, 0x00	; 0
+  c6:	02 c0       	rjmp	.+4      	; 0xcc <DIO_write+0x4e>
+  c8:	88 0f       	add	r24, r24
+  ca:	99 1f       	adc	r25, r25
+  cc:	6a 95       	dec	r22
+  ce:	e2 f7       	brpl	.-8      	; 0xc8 <DIO_write+0x4a>
+  d0:	80 95       	com	r24
+  d2:	82 23       	and	r24, r18
+  d4:	88 bb       	out	0x18, r24	; 24
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+  d6:	80 e0       	ldi	r24, 0x00	; 0
+		{
+			case LOW:
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB &= ~ (1<<u8_a_pinNumber);		break;
+  d8:	08 95       	ret
+				case PORT_C:	PORTC &= ~ (1<<u8_a_pinNumber);		break;
+  da:	25 b3       	in	r18, 0x15	; 21
+  dc:	81 e0       	ldi	r24, 0x01	; 1
+  de:	90 e0       	ldi	r25, 0x00	; 0
+  e0:	02 c0       	rjmp	.+4      	; 0xe6 <DIO_write+0x68>
+  e2:	88 0f       	add	r24, r24
+  e4:	99 1f       	adc	r25, r25
+  e6:	6a 95       	dec	r22
+  e8:	e2 f7       	brpl	.-8      	; 0xe2 <DIO_write+0x64>
+  ea:	80 95       	com	r24
+  ec:	82 23       	and	r24, r18
+  ee:	85 bb       	out	0x15, r24	; 21
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+  f0:	80 e0       	ldi	r24, 0x00	; 0
+			case LOW:
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_C:	PORTC &= ~ (1<<u8_a_pinNumber);		break;
+  f2:	08 95       	ret
+				case PORT_D:	PORTD &= ~ (1<<u8_a_pinNumber);		break;
+  f4:	22 b3       	in	r18, 0x12	; 18
+  f6:	81 e0       	ldi	r24, 0x01	; 1
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	02 c0       	rjmp	.+4      	; 0x100 <DIO_write+0x82>
+  fc:	88 0f       	add	r24, r24
+  fe:	99 1f       	adc	r25, r25
+ 100:	6a 95       	dec	r22
+ 102:	e2 f7       	brpl	.-8      	; 0xfc <DIO_write+0x7e>
+ 104:	80 95       	com	r24
+ 106:	82 23       	and	r24, r18
+ 108:	82 bb       	out	0x12, r24	; 18
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+ 10a:	80 e0       	ldi	r24, 0x00	; 0
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_C:	PORTC &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_D:	PORTD &= ~ (1<<u8_a_pinNumber);		break;
+ 10c:	08 95       	ret
+				default:		error = WRONG_PORT_NUMBER;		break;
+			}
+			break;
+				
+			case HIGH:
+			switch(u8_a_portNumber)
+ 10e:	82 34       	cpi	r24, 0x42	; 66
+ 110:	a9 f0       	breq	.+42     	; 0x13c <DIO_write+0xbe>
+ 112:	18 f4       	brcc	.+6      	; 0x11a <DIO_write+0x9c>
+ 114:	81 34       	cpi	r24, 0x41	; 65
+ 116:	31 f0       	breq	.+12     	; 0x124 <DIO_write+0xa6>
+ 118:	3b c0       	rjmp	.+118    	; 0x190 <DIO_write+0x112>
+ 11a:	83 34       	cpi	r24, 0x43	; 67
+ 11c:	d9 f0       	breq	.+54     	; 0x154 <DIO_write+0xd6>
+ 11e:	84 34       	cpi	r24, 0x44	; 68
+ 120:	29 f1       	breq	.+74     	; 0x16c <DIO_write+0xee>
+ 122:	36 c0       	rjmp	.+108    	; 0x190 <DIO_write+0x112>
+			{
+				case PORT_A:	PORTA |= (1<<u8_a_pinNumber);		break;
+ 124:	2b b3       	in	r18, 0x1b	; 27
+ 126:	81 e0       	ldi	r24, 0x01	; 1
+ 128:	90 e0       	ldi	r25, 0x00	; 0
+ 12a:	02 c0       	rjmp	.+4      	; 0x130 <DIO_write+0xb2>
+ 12c:	88 0f       	add	r24, r24
+ 12e:	99 1f       	adc	r25, r25
+ 130:	6a 95       	dec	r22
+ 132:	e2 f7       	brpl	.-8      	; 0x12c <DIO_write+0xae>
+ 134:	82 2b       	or	r24, r18
+ 136:	8b bb       	out	0x1b, r24	; 27
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+ 138:	80 e0       	ldi	r24, 0x00	; 0
+			break;
+				
+			case HIGH:
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA |= (1<<u8_a_pinNumber);		break;
+ 13a:	08 95       	ret
+				case PORT_B:	PORTB |= (1<<u8_a_pinNumber);		break;
+ 13c:	28 b3       	in	r18, 0x18	; 24
+ 13e:	81 e0       	ldi	r24, 0x01	; 1
+ 140:	90 e0       	ldi	r25, 0x00	; 0
+ 142:	02 c0       	rjmp	.+4      	; 0x148 <DIO_write+0xca>
+ 144:	88 0f       	add	r24, r24
+ 146:	99 1f       	adc	r25, r25
+ 148:	6a 95       	dec	r22
+ 14a:	e2 f7       	brpl	.-8      	; 0x144 <DIO_write+0xc6>
+ 14c:	82 2b       	or	r24, r18
+ 14e:	88 bb       	out	0x18, r24	; 24
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+ 150:	80 e0       	ldi	r24, 0x00	; 0
+				
+			case HIGH:
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA |= (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB |= (1<<u8_a_pinNumber);		break;
+ 152:	08 95       	ret
+				case PORT_C:	PORTC |= (1<<u8_a_pinNumber);		break;
+ 154:	25 b3       	in	r18, 0x15	; 21
+ 156:	81 e0       	ldi	r24, 0x01	; 1
+ 158:	90 e0       	ldi	r25, 0x00	; 0
+ 15a:	02 c0       	rjmp	.+4      	; 0x160 <DIO_write+0xe2>
+ 15c:	88 0f       	add	r24, r24
+ 15e:	99 1f       	adc	r25, r25
+ 160:	6a 95       	dec	r22
+ 162:	e2 f7       	brpl	.-8      	; 0x15c <DIO_write+0xde>
+ 164:	82 2b       	or	r24, r18
+ 166:	85 bb       	out	0x15, r24	; 21
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+ 168:	80 e0       	ldi	r24, 0x00	; 0
+			case HIGH:
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA |= (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB |= (1<<u8_a_pinNumber);		break;
+				case PORT_C:	PORTC |= (1<<u8_a_pinNumber);		break;
+ 16a:	08 95       	ret
+				case PORT_D:	PORTD |= (1<<u8_a_pinNumber);		break;
+ 16c:	22 b3       	in	r18, 0x12	; 18
+ 16e:	81 e0       	ldi	r24, 0x01	; 1
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	02 c0       	rjmp	.+4      	; 0x178 <DIO_write+0xfa>
+ 174:	88 0f       	add	r24, r24
+ 176:	99 1f       	adc	r25, r25
+ 178:	6a 95       	dec	r22
+ 17a:	e2 f7       	brpl	.-8      	; 0x174 <DIO_write+0xf6>
+ 17c:	82 2b       	or	r24, r18
+ 17e:	82 bb       	out	0x12, r24	; 18
+*										WRONG_VALUE
+*******************************************************************************/
+
+en_dioError_t DIO_write(u8 u8_a_portNumber, u8 u8_a_pinNumber, u8 u8_a_value)		// Write data to dio
+{
+	en_dioError_t error = DIO_OK;
+ 180:	80 e0       	ldi	r24, 0x00	; 0
+			switch(u8_a_portNumber)
+			{
+				case PORT_A:	PORTA |= (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB |= (1<<u8_a_pinNumber);		break;
+				case PORT_C:	PORTC |= (1<<u8_a_pinNumber);		break;
+				case PORT_D:	PORTD |= (1<<u8_a_pinNumber);		break;
+ 182:	08 95       	ret
+				break;
+		}
+	}
+	else
+	{
+		error = WRONG_PIN_NUMBER;
+ 184:	82 e0       	ldi	r24, 0x02	; 2
+ 186:	08 95       	ret
+				default:		error = WRONG_PORT_NUMBER;		break;
+			}
+			break;
+				
+			default:
+				error = WRONG_VALUE;
+ 188:	83 e0       	ldi	r24, 0x03	; 3
+ 18a:	08 95       	ret
+			{
+				case PORT_A:	PORTA &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_C:	PORTC &= ~ (1<<u8_a_pinNumber);		break;
+				case PORT_D:	PORTD &= ~ (1<<u8_a_pinNumber);		break;
+				default:		error = WRONG_PORT_NUMBER;		break;
+ 18c:	81 e0       	ldi	r24, 0x01	; 1
+ 18e:	08 95       	ret
+			{
+				case PORT_A:	PORTA |= (1<<u8_a_pinNumber);		break;
+				case PORT_B:	PORTB |= (1<<u8_a_pinNumber);		break;
+				case PORT_C:	PORTC |= (1<<u8_a_pinNumber);		break;
+				case PORT_D:	PORTD |= (1<<u8_a_pinNumber);		break;
+				default:		error = WRONG_PORT_NUMBER;		break;
+ 190:	81 e0       	ldi	r24, 0x01	; 1
+	{
+		error = WRONG_PIN_NUMBER;
+	}
+	return error;
+
+}
+ 192:	08 95       	ret
+
+00000194 <__vector_11>:
+	
+}
+
+#if			TIMER_0_MODE		==		OV_TIMER
+ISR(TIMER0_OVF)
+{
+ 194:	1f 92       	push	r1
+ 196:	0f 92       	push	r0
+ 198:	0f b6       	in	r0, 0x3f	; 63
+ 19a:	0f 92       	push	r0
+ 19c:	11 24       	eor	r1, r1
+ 19e:	2f 93       	push	r18
+ 1a0:	3f 93       	push	r19
+ 1a2:	4f 93       	push	r20
+ 1a4:	5f 93       	push	r21
+ 1a6:	6f 93       	push	r22
+ 1a8:	7f 93       	push	r23
+ 1aa:	8f 93       	push	r24
+ 1ac:	9f 93       	push	r25
+ 1ae:	af 93       	push	r26
+ 1b0:	bf 93       	push	r27
+ 1b2:	ef 93       	push	r30
+ 1b4:	ff 93       	push	r31
+	if (u8_g_normalToPwm == 0	)
+ 1b6:	80 91 69 00 	lds	r24, 0x0069	; 0x800069 <u8_g_normalToPwm>
+ 1ba:	81 11       	cpse	r24, r1
+ 1bc:	35 c0       	rjmp	.+106    	; 0x228 <__vector_11+0x94>
+	{
+		
+		static u32 OVFCounter = 0;
+		OVFCounter  ++;
+ 1be:	80 91 65 00 	lds	r24, 0x0065	; 0x800065 <OVFCounter.1713>
+ 1c2:	90 91 66 00 	lds	r25, 0x0066	; 0x800066 <OVFCounter.1713+0x1>
+ 1c6:	a0 91 67 00 	lds	r26, 0x0067	; 0x800067 <OVFCounter.1713+0x2>
+ 1ca:	b0 91 68 00 	lds	r27, 0x0068	; 0x800068 <OVFCounter.1713+0x3>
+ 1ce:	01 96       	adiw	r24, 0x01	; 1
+ 1d0:	a1 1d       	adc	r26, r1
+ 1d2:	b1 1d       	adc	r27, r1
+ 1d4:	80 93 65 00 	sts	0x0065, r24	; 0x800065 <OVFCounter.1713>
+ 1d8:	90 93 66 00 	sts	0x0066, r25	; 0x800066 <OVFCounter.1713+0x1>
+ 1dc:	a0 93 67 00 	sts	0x0067, r26	; 0x800067 <OVFCounter.1713+0x2>
+ 1e0:	b0 93 68 00 	sts	0x0068, r27	; 0x800068 <OVFCounter.1713+0x3>
+		if (OVFCounter  == u32_g_timer0NumberOfOVFs)
+ 1e4:	40 91 77 00 	lds	r20, 0x0077	; 0x800077 <u32_g_timer0NumberOfOVFs>
+ 1e8:	50 91 78 00 	lds	r21, 0x0078	; 0x800078 <u32_g_timer0NumberOfOVFs+0x1>
+ 1ec:	60 91 79 00 	lds	r22, 0x0079	; 0x800079 <u32_g_timer0NumberOfOVFs+0x2>
+ 1f0:	70 91 7a 00 	lds	r23, 0x007A	; 0x80007a <u32_g_timer0NumberOfOVFs+0x3>
+ 1f4:	84 17       	cp	r24, r20
+ 1f6:	95 07       	cpc	r25, r21
+ 1f8:	a6 07       	cpc	r26, r22
+ 1fa:	b7 07       	cpc	r27, r23
+ 1fc:	09 f0       	breq	.+2      	; 0x200 <__vector_11+0x6c>
+ 1fe:	4a c0       	rjmp	.+148    	; 0x294 <__vector_11+0x100>
+		{
+			if(TIMER_0_callBack != nullPtr)
+ 200:	e0 91 6c 00 	lds	r30, 0x006C	; 0x80006c <TIMER_0_callBack>
+ 204:	f0 91 6d 00 	lds	r31, 0x006D	; 0x80006d <TIMER_0_callBack+0x1>
+ 208:	30 97       	sbiw	r30, 0x00	; 0
+ 20a:	09 f0       	breq	.+2      	; 0x20e <__vector_11+0x7a>
+			{
+				TIMER_0_callBack();
+ 20c:	09 95       	icall
+			}
+			OVFCounter  =	0;
+ 20e:	10 92 65 00 	sts	0x0065, r1	; 0x800065 <OVFCounter.1713>
+ 212:	10 92 66 00 	sts	0x0066, r1	; 0x800066 <OVFCounter.1713+0x1>
+ 216:	10 92 67 00 	sts	0x0067, r1	; 0x800067 <OVFCounter.1713+0x2>
+ 21a:	10 92 68 00 	sts	0x0068, r1	; 0x800068 <OVFCounter.1713+0x3>
+			TCNT0 = 256 - u8_g_timer0RemTicks;
+ 21e:	80 91 76 00 	lds	r24, 0x0076	; 0x800076 <u8_g_timer0RemTicks>
+ 222:	81 95       	neg	r24
+ 224:	82 bf       	out	0x32, r24	; 50
+ 226:	36 c0       	rjmp	.+108    	; 0x294 <__vector_11+0x100>
+		}
+	}
+	else
+	{
+		static u8 u8_gs_generatorState = 0;
+		if (u8_gs_generatorState)
+ 228:	80 91 64 00 	lds	r24, 0x0064	; 0x800064 <u8_gs_generatorState.1714>
+ 22c:	88 23       	and	r24, r24
+ 22e:	c9 f0       	breq	.+50     	; 0x262 <__vector_11+0xce>
+		{
+			DIO_write(PORT_D,4,LOW);
+ 230:	40 e0       	ldi	r20, 0x00	; 0
+ 232:	64 e0       	ldi	r22, 0x04	; 4
+ 234:	84 e4       	ldi	r24, 0x44	; 68
+ 236:	0e 94 3f 00 	call	0x7e	; 0x7e <DIO_write>
+			DIO_write(PORT_D,5,LOW);
+ 23a:	40 e0       	ldi	r20, 0x00	; 0
+ 23c:	65 e0       	ldi	r22, 0x05	; 5
+ 23e:	84 e4       	ldi	r24, 0x44	; 68
+ 240:	0e 94 3f 00 	call	0x7e	; 0x7e <DIO_write>
+			TCNT0 = 256 - u16_g_offTime;
+ 244:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <u16_g_offTime>
+ 248:	81 95       	neg	r24
+ 24a:	82 bf       	out	0x32, r24	; 50
+			if (u16_g_offTime < 256)
+ 24c:	80 91 7d 00 	lds	r24, 0x007D	; 0x80007d <u16_g_offTime>
+ 250:	90 91 7e 00 	lds	r25, 0x007E	; 0x80007e <u16_g_offTime+0x1>
+ 254:	8f 3f       	cpi	r24, 0xFF	; 255
+ 256:	91 05       	cpc	r25, r1
+ 258:	09 f0       	breq	.+2      	; 0x25c <__vector_11+0xc8>
+ 25a:	e0 f4       	brcc	.+56     	; 0x294 <__vector_11+0x100>
+			{
+				u8_gs_generatorState = 0;
+ 25c:	10 92 64 00 	sts	0x0064, r1	; 0x800064 <u8_gs_generatorState.1714>
+ 260:	19 c0       	rjmp	.+50     	; 0x294 <__vector_11+0x100>
+			}	
+		}
+		else
+		{
+			DIO_write(PORT_D,4, HIGH);
+ 262:	41 e0       	ldi	r20, 0x01	; 1
+ 264:	64 e0       	ldi	r22, 0x04	; 4
+ 266:	84 e4       	ldi	r24, 0x44	; 68
+ 268:	0e 94 3f 00 	call	0x7e	; 0x7e <DIO_write>
+			DIO_write(PORT_D,5, HIGH);
+ 26c:	41 e0       	ldi	r20, 0x01	; 1
+ 26e:	65 e0       	ldi	r22, 0x05	; 5
+ 270:	84 e4       	ldi	r24, 0x44	; 68
+ 272:	0e 94 3f 00 	call	0x7e	; 0x7e <DIO_write>
+			TCNT0 = 256 - u16_g_onTime;
+ 276:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <u16_g_onTime>
+ 27a:	81 95       	neg	r24
+ 27c:	82 bf       	out	0x32, r24	; 50
+			if (u16_g_onTime < 256)
+ 27e:	80 91 7b 00 	lds	r24, 0x007B	; 0x80007b <u16_g_onTime>
+ 282:	90 91 7c 00 	lds	r25, 0x007C	; 0x80007c <u16_g_onTime+0x1>
+ 286:	8f 3f       	cpi	r24, 0xFF	; 255
+ 288:	91 05       	cpc	r25, r1
+ 28a:	09 f0       	breq	.+2      	; 0x28e <__vector_11+0xfa>
+ 28c:	18 f4       	brcc	.+6      	; 0x294 <__vector_11+0x100>
+			{
+				u8_gs_generatorState = 1;
+ 28e:	81 e0       	ldi	r24, 0x01	; 1
+ 290:	80 93 64 00 	sts	0x0064, r24	; 0x800064 <u8_gs_generatorState.1714>
+			}
+			
+		}
+		
+	}
+}
+ 294:	ff 91       	pop	r31
+ 296:	ef 91       	pop	r30
+ 298:	bf 91       	pop	r27
+ 29a:	af 91       	pop	r26
+ 29c:	9f 91       	pop	r25
+ 29e:	8f 91       	pop	r24
+ 2a0:	7f 91       	pop	r23
+ 2a2:	6f 91       	pop	r22
+ 2a4:	5f 91       	pop	r21
+ 2a6:	4f 91       	pop	r20
+ 2a8:	3f 91       	pop	r19
+ 2aa:	2f 91       	pop	r18
+ 2ac:	0f 90       	pop	r0
+ 2ae:	0f be       	out	0x3f, r0	; 63
+ 2b0:	0f 90       	pop	r0
+ 2b2:	1f 90       	pop	r1
+ 2b4:	18 95       	reti
+
+000002b6 <__vector_5>:
+	}
+}
+#endif
+
+ISR(TIMER2_OVF)
+{		
+ 2b6:	1f 92       	push	r1
+ 2b8:	0f 92       	push	r0
+ 2ba:	0f b6       	in	r0, 0x3f	; 63
+ 2bc:	0f 92       	push	r0
+ 2be:	11 24       	eor	r1, r1
+ 2c0:	2f 93       	push	r18
+ 2c2:	3f 93       	push	r19
+ 2c4:	4f 93       	push	r20
+ 2c6:	5f 93       	push	r21
+ 2c8:	6f 93       	push	r22
+ 2ca:	7f 93       	push	r23
+ 2cc:	8f 93       	push	r24
+ 2ce:	9f 93       	push	r25
+ 2d0:	af 93       	push	r26
+ 2d2:	bf 93       	push	r27
+ 2d4:	ef 93       	push	r30
+ 2d6:	ff 93       	push	r31
+		static u32 OVFCounter = 0;
+		OVFCounter  ++;
+ 2d8:	80 91 60 00 	lds	r24, 0x0060	; 0x800060 <_edata>
+ 2dc:	90 91 61 00 	lds	r25, 0x0061	; 0x800061 <_edata+0x1>
+ 2e0:	a0 91 62 00 	lds	r26, 0x0062	; 0x800062 <_edata+0x2>
+ 2e4:	b0 91 63 00 	lds	r27, 0x0063	; 0x800063 <_edata+0x3>
+ 2e8:	01 96       	adiw	r24, 0x01	; 1
+ 2ea:	a1 1d       	adc	r26, r1
+ 2ec:	b1 1d       	adc	r27, r1
+ 2ee:	80 93 60 00 	sts	0x0060, r24	; 0x800060 <_edata>
+ 2f2:	90 93 61 00 	sts	0x0061, r25	; 0x800061 <_edata+0x1>
+ 2f6:	a0 93 62 00 	sts	0x0062, r26	; 0x800062 <_edata+0x2>
+ 2fa:	b0 93 63 00 	sts	0x0063, r27	; 0x800063 <_edata+0x3>
+		if (OVFCounter  == u32_g_timer2NumberOfOVFs)
+ 2fe:	40 91 72 00 	lds	r20, 0x0072	; 0x800072 <u32_g_timer2NumberOfOVFs>
+ 302:	50 91 73 00 	lds	r21, 0x0073	; 0x800073 <u32_g_timer2NumberOfOVFs+0x1>
+ 306:	60 91 74 00 	lds	r22, 0x0074	; 0x800074 <u32_g_timer2NumberOfOVFs+0x2>
+ 30a:	70 91 75 00 	lds	r23, 0x0075	; 0x800075 <u32_g_timer2NumberOfOVFs+0x3>
+ 30e:	84 17       	cp	r24, r20
+ 310:	95 07       	cpc	r25, r21
+ 312:	a6 07       	cpc	r26, r22
+ 314:	b7 07       	cpc	r27, r23
+ 316:	99 f4       	brne	.+38     	; 0x33e <__vector_5+0x88>
+		{
+			if(TIMER_2_callBack != nullPtr)
+ 318:	e0 91 6a 00 	lds	r30, 0x006A	; 0x80006a <TIMER_2_callBack>
+ 31c:	f0 91 6b 00 	lds	r31, 0x006B	; 0x80006b <TIMER_2_callBack+0x1>
+ 320:	30 97       	sbiw	r30, 0x00	; 0
+ 322:	09 f0       	breq	.+2      	; 0x326 <__vector_5+0x70>
+			{
+				TIMER_2_callBack();
+ 324:	09 95       	icall
+			}
+			OVFCounter  =	0;
+ 326:	10 92 60 00 	sts	0x0060, r1	; 0x800060 <_edata>
+ 32a:	10 92 61 00 	sts	0x0061, r1	; 0x800061 <_edata+0x1>
+ 32e:	10 92 62 00 	sts	0x0062, r1	; 0x800062 <_edata+0x2>
+ 332:	10 92 63 00 	sts	0x0063, r1	; 0x800063 <_edata+0x3>
+			TCNT0 = 256 - u8_g_timer2RemTicks;
+ 336:	80 91 6e 00 	lds	r24, 0x006E	; 0x80006e <u8_g_timer2RemTicks>
+ 33a:	81 95       	neg	r24
+ 33c:	82 bf       	out	0x32, r24	; 50
+			
+		}
+
+ 33e:	ff 91       	pop	r31
+ 340:	ef 91       	pop	r30
+ 342:	bf 91       	pop	r27
+ 344:	af 91       	pop	r26
+ 346:	9f 91       	pop	r25
+ 348:	8f 91       	pop	r24
+ 34a:	7f 91       	pop	r23
+ 34c:	6f 91       	pop	r22
+ 34e:	5f 91       	pop	r21
+ 350:	4f 91       	pop	r20
+ 352:	3f 91       	pop	r19
+ 354:	2f 91       	pop	r18
+ 356:	0f 90       	pop	r0
+ 358:	0f be       	out	0x3f, r0	; 63
+ 35a:	0f 90       	pop	r0
+ 35c:	1f 90       	pop	r1
+ 35e:	18 95       	reti
+
+00000360 <_exit>:
+ 360:	f8 94       	cli
+
+00000362 <__stop_program>:
+ 362:	ff cf       	rjmp	.-2      	; 0x362 <__stop_program>
