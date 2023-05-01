@@ -189,5 +189,55 @@ typedef enum{
 #define INT0		bit6
 #define INT2		bit5
 
+/************************************************************************/
+/*							TWI_REGISTERS								*/
+/************************************************************************/#define TWBR		(*(volatile unsigned short*)0x20)#define TWSR		(*(volatile unsigned short*)0x21)#define TWAR		(*(volatile unsigned short*)0x22)#define TWDR		(*(volatile unsigned short*)0x23)#define TWCR		(*(volatile unsigned short*)0x56)
+
+/************************************************************************/
+/*							UART_REGISTERS								*/
+/************************************************************************/
+#define UDR			(*((volatile u8*)(0x2C)))
+#define UCSRA		(*((volatile u8*)(0x2B)))
+#define RXC			bit7
+#define	TXC			bit6
+#define UDRE		bit5
+#define FE			bit4
+#define DOR			bit3
+#define PE			bit2
+#define U2X			bit1
+#define MPCM		bit0
+
+#define UCSRB		(*((volatile u8*)(0x2A)))
+#define RXCIE		bit7
+#define	TXCIE		bit6
+#define UDRIE		bit5
+#define RXEN		bit4
+#define TXEN		bit3
+#define UCSZ2		bit2
+#define RXB8		bit1
+#define TXB8		bit0
+
+#define UCSRC		(*((volatile u8*)(0x40)))
+#define URSEL		bit7
+#define	UMSEL		bit6
+#define UPM1		bit5
+#define UPM0		bit4
+#define USBS		bit3
+#define UCSZ1		bit2
+#define UCSZ0		bit1
+#define UCPOL		bit0
+
+
+#define UBRRH		(*((volatile u8*)(0x40)))
+
+#define UBRRL		(*((volatile u8*)(0x29)))
+
+/************************************************************************/
+/*							SPI_REGISTERS								*/
+/************************************************************************/
+#define SPCR		(*((volatile u8*)(0x2D)))
+#define SPDR		(*((volatile u8*)(0x2F)))
+#define SPSR		(*((volatile u8*)(0x2E)))
+
 
 #endif // !REGISTERS_H_
