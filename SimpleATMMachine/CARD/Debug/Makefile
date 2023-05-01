@@ -37,6 +37,7 @@ SUBDIRS :=  \
 ../Debug/ \
 ../Debug/APP/ \
 ../ECUAL/eeprom \
+../ECUAL/esp8266 \
 ../ECUAL/trigger \
 ../MCAL/dio \
 ../MCAL/uart \

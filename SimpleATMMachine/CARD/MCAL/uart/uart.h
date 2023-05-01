@@ -19,6 +19,8 @@ void UART_Init(void);
 void UART_SendChar(u8 data);
 
 u8 UART_GetChar(void);
+void UART_sendString(u8*);
+u8* UART_recieveString();
 
 
 

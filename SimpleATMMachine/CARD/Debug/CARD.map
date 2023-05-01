@@ -183,15 +183,20 @@ Discarded input sections
                 0x00000000        0x8 MCAL/uart/uart.o
  .text.UART_GetChar
                 0x00000000        0xe MCAL/uart/uart.o
- .debug_info    0x00000000      0x10f MCAL/uart/uart.o
- .debug_abbrev  0x00000000       0xb0 MCAL/uart/uart.o
+ .text.UART_sendString
+                0x00000000       0x28 MCAL/uart/uart.o
+ .text.UART_recieveString
+                0x00000000       0x24 MCAL/uart/uart.o
+ .debug_info    0x00000000      0x1f3 MCAL/uart/uart.o
+ .debug_abbrev  0x00000000      0x163 MCAL/uart/uart.o
+ .debug_loc     0x00000000       0xdd MCAL/uart/uart.o
  .debug_aranges
-                0x00000000       0x30 MCAL/uart/uart.o
- .debug_ranges  0x00000000       0x20 MCAL/uart/uart.o
- .debug_line    0x00000000      0x119 MCAL/uart/uart.o
- .debug_str     0x00000000      0x1c0 MCAL/uart/uart.o
+                0x00000000       0x40 MCAL/uart/uart.o
+ .debug_ranges  0x00000000       0x30 MCAL/uart/uart.o
+ .debug_line    0x00000000      0x188 MCAL/uart/uart.o
+ .debug_str     0x00000000      0x207 MCAL/uart/uart.o
  .comment       0x00000000       0x31 MCAL/uart/uart.o
- .debug_frame   0x00000000       0x44 MCAL/uart/uart.o
+ .debug_frame   0x00000000       0x7c MCAL/uart/uart.o
  .text          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
  .data          0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)
  .bss           0x00000000        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr5\libm.a(addsf3.o)

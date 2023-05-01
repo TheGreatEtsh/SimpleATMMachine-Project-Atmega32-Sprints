@@ -192,6 +192,7 @@
     <Folder Include="Debug\" />
     <Folder Include="Debug\APP\" />
     <Folder Include="ECUAL\eeprom" />
+    <Folder Include="ECUAL\esp8266" />
     <Folder Include="ECUAL\trigger" />
     <Folder Include="MCAL\dio" />
     <Folder Include="MCAL\uart" />
