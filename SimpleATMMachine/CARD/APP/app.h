@@ -5,10 +5,11 @@
  *  Author: Ahmed Hesham
  */ 
 
-
 #ifndef APP_H_
 #define APP_H_
+#include "../MCAL/uart/uart.h"
 
+#include "../MCAL/i2c/i2c.h"
 
 
 

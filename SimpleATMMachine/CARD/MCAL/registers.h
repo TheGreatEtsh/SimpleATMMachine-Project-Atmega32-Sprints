@@ -22,7 +22,7 @@ typedef enum{
 	bit7
 	}en_bitNumber_t;
 	
-	
+	/*----------------------------------------------------------------*/	/* TWI stands for "Two Wire Interface" or "TWI Was I2C(tm)" */	#define TWBR    (*(volatile unsigned short*)0x20)	#define TWSR    (*(volatile unsigned short*)0x21)	#define TWAR    (*(volatile unsigned short*)0x22)	#define TWDR    (*(volatile unsigned short*)0x23)	#define TWCR    (*(volatile unsigned short*)0x56)
 	/************************************************************************/
 	/*							UART_REGISTERS								*/
 	/************************************************************************/
