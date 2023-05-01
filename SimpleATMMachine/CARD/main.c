@@ -9,9 +9,8 @@
 
 int main(void)
 {
-app_init();
-I2C_TEST();
-    /* Replace with your application code */
+SPI_initMaster();
+ /* Replace with your application code */
     while (1) 
     {
     }
