@@ -132,6 +132,12 @@
     <Compile Include="ECUAL\eeprom\eeprom.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="ECUAL\esp8266\esp8266.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ECUAL\esp8266\esp8266.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="ECUAL\trigger\trigger.c">
       <SubType>compile</SubType>
     </Compile>

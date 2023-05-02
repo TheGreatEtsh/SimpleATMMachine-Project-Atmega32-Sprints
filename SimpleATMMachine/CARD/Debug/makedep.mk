@@ -6,6 +6,8 @@ APP\app.c
 
 ECUAL\eeprom\eeprom.c
 
+ECUAL\esp8266\esp8266.c
+
 ECUAL\trigger\trigger.c
 
 main.c

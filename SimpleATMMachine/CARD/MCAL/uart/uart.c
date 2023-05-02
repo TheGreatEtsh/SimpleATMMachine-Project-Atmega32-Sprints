@@ -30,7 +30,9 @@ void UART_SendChar(u8 data)
 	
 	while(GET_BIT(UCSRA,UDRE) == 0x00);
 	UDR = data;
-}
+/*while(GET_BIT(UCSRA,TXC) == 0x00);
+SET_BIT(UCSRA,TXC);
+*/}
 
 u8 UART_GetChar(void)
 {
@@ -49,12 +51,12 @@ u8 UART_GetChar(void)
 
 void UART_sendString(u8 *str)
 {
-	u8 i=0;
+u16 i=0;
 
 
-	while(str[i]!='\0')
+while(str[i]!='\0')
 	{
-		UART_sendByte(str[i]);
+		UART_SendChar(str[i]);
 		i++;
 
 	}
@@ -64,18 +66,18 @@ void UART_sendString(u8 *str)
 }
 u8* UART_recieveString()
 {
-	u8* str2;
-	u8 i=0;
+u16* str2;
+u16 i=0;
 
 
-	do    //???????????????
+do    //???????????????
 	{
-		UART_recieveByte(str2[i]);
+	str2[i]=	UART_GetChar();
 		i++;
 
 	}while(str2[i]!=0);
 
 
-	return str2;
+return str2;
 
 }

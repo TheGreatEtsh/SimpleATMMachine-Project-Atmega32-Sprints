@@ -5,15 +5,12 @@
  * Author : Ahmed Hesham
  */ 
 
-#include "APP/app.h"
 
 int main(void)
 {
     /* Replace with your application code */
-	APP_buttonTest();
     while (1) 
     {
     }
-	return 0;
 }
 
