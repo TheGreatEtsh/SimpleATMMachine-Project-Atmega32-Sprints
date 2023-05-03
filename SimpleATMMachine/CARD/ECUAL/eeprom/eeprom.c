@@ -118,7 +118,7 @@ u8 eeprom_ReadString (u16 u16_Saddr, u8 *u8_Pdata)
 
 
 /*-----------------------256-------------------------------*/
-u8 EEPROM_writeByte_256(u32 u32addr, u8 u8data)
+u8 EEPROM_writeByte_256(u16 u16_addr, u8 u8data)
 {
     /* Send the Start Bit */
     if (I2C_start()==EVENT_OK)
@@ -128,9 +128,9 @@ u8 EEPROM_writeByte_256(u32 u32addr, u8 u8data)
         if (I2C_address_select(0xA0,write)==SLA_W_ACK_SENT)
         {
             /* Send the required memory location address */
-            if (I2C_data_rw((u8)(u32addr),write,ACK)==DATA_WRITE_ACK_SENT)
+            if (I2C_data_rw((u8)((u16_addr >> 8) & 0xFF),write,ACK)==DATA_WRITE_ACK_SENT)
             {
-                if (I2C_data_rw((u8)(u32addr),write,ACK)==DATA_WRITE_ACK_SENT)
+                if (I2C_data_rw((u8)(u16_addr),write,ACK)==DATA_WRITE_ACK_SENT)
                 {
 
                     /* write byte to eeprom */
@@ -145,7 +145,7 @@ u8 EEPROM_writeByte_256(u32 u32addr, u8 u8data)
     }
 }
 
-u8 EEPROM_readByte_256(u16 u16addr, u8 *u8data)
+u8 EEPROM_readByte_256(u16 u16_addr, u8 *u8data)
 {
     /* Send the Start Bit */
     if (I2C_start()==EVENT_OK)
@@ -155,9 +155,9 @@ u8 EEPROM_readByte_256(u16 u16addr, u8 *u8data)
         if (I2C_address_select(0xA0,write)==SLA_W_ACK_SENT)
         {
             /* Send the required memory location address */
-            if (I2C_data_rw((u8)(u16addr),write,ACK)==DATA_WRITE_ACK_SENT)
+            if (I2C_data_rw((u8)((u16_addr >> 8) & 0xFF),write,ACK)==DATA_WRITE_ACK_SENT)
             {
-                if (I2C_data_rw((u8)(u16addr),write,ACK)==DATA_WRITE_ACK_SENT)
+                if (I2C_data_rw((u8)(u16_addr),write,ACK)==DATA_WRITE_ACK_SENT)
                 {
                     /* Send the Repeated Start Bit */
                     if (I2C_repeated_start()==EVENT_OK)
