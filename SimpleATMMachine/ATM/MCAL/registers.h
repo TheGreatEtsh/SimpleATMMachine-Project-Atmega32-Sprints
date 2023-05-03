@@ -236,8 +236,22 @@ typedef enum{
 /*							SPI_REGISTERS								*/
 /************************************************************************/
 #define SPCR		(*((volatile u8*)(0x2D)))
-#define SPDR		(*((volatile u8*)(0x2F)))
+#define SPIE		bit7
+#define	SPE         bit6
+#define DORD	    bit5
+#define MSTR	    bit4
+#define CPOL		bit3
+#define CPHA		bit2
+#define SPR1		bit1
+#define SPR0		bit0
+
 #define SPSR		(*((volatile u8*)(0x2E)))
+
+#define SPIF		bit7
+#define WCOL		bit6
+#define SPI2X		bit0
+
+#define SPDR		(*((volatile u8*)(0x2F)))
 
 
 #endif // !REGISTERS_H_

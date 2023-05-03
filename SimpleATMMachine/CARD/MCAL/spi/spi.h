@@ -15,7 +15,8 @@
 
 void SPI_initMaster(void);
 void SPI_initSlave(void);
-void SPI_sendByte(u8);
-u8 SPI_receiveByte(void);
+u8 SPI_transmitByte(u8 data);
+void SPI_startTransmission (void);
+void SPI_stopTransmission (void);
 
 #endif /* SPI_H_ */

@@ -10,8 +10,11 @@
 int main(void)
 {
     /* Replace with your application code */
-	APP_buttonTest();
-    while (1) 
+	//SPI_initSlave();
+	//APP_lcdTEST();
+    //APP_buttonTest();
+	APP_spiSlaveTest();
+	while (1) 
     {
     }
 	return 0;

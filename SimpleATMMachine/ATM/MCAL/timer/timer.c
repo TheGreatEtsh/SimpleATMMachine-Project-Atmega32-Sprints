@@ -392,7 +392,7 @@ en_timerError_t TIMER_delay(u8 u8_a_timerUsed, u32 u32_a_timeInMS)
 	else if (u8_a_timerUsed == TIMER_2)
 	{
 		TIMER_stopInterrupt(TIMER_2);
-		
+		TIMER_start(TIMER_2);
 		u32 overflowCounter = 0;
 		u32 tickTime = 0;
 		u32 numberOfTicks = 0;
@@ -420,7 +420,7 @@ en_timerError_t TIMER_delay(u8 u8_a_timerUsed, u32 u32_a_timeInMS)
 			SET_BIT(TIFR, TOV2);
 			overflowCounter++;
 		}
-		
+		TIMER_stop(TIMER_2);
 		TIMER_enableInterrupt(TIMER_2);
 		
 		
