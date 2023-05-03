@@ -446,7 +446,7 @@ void APP_superLoop (void)
 			
 			/*step 20 -> go to RESETTING_STATE*/
 			atmState = RESETTING_STATE;
-			
+			break;
 			
 			case ALARM_STATE:
 			BUZZER_on(BUZZER_0);
