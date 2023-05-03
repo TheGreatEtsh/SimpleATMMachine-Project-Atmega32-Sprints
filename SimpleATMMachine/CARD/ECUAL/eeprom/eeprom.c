@@ -101,7 +101,7 @@ u8 eeprom_ReadString (u16 u16_Saddr, u8 *u8_Pdata)
 			u8 i = 0;
 			do
 			{
-				 EEPROM_readByte_256(u16_Saddr++,&u8_Pdata[i]);
+				 EEPROM_readByte(u16_Saddr++,&u8_Pdata[i]);
 				_delay_ms(20);
 			} 
 			while(u8_Pdata[i++] != '\0');
