@@ -68,3 +68,29 @@ u8 EEPROM_readByte(u16 u16addr, u8 *u8data)
         }
     }
 }
+/*------------------------------didnt test yet----------------------------------*/
+u8 eeprom_WriteString (u16 u16_Saddr, u8 *u8_Pdata)
+{ 
+		u8 i;
+		u16 ee_address=u16_Saddr;
+		for (i=0;u8_Pdata[i];i++)
+		{
+			eeprom_WriteByte(ee_address++,&u8_Pdata[i])
+			/*add_delay*/
+		} 
+		
+		eeprom_WriteByte(ee_address,'\0');
+				
+}
+u8 eeprom_ReadString (u16 u16_Saddr, u8 *u8_Pdata)
+{
+			u8 i;
+			u16 ee_address=u16_Saddr;
+			for (i=0;u8_Pdata[i];i++)
+			{
+				eeprom_ReadByte(ee_address++,u8_Pdata[i])
+				/*add_delay*/
+			}
+			
+			u8_Pdata[i]='\0';
+}
