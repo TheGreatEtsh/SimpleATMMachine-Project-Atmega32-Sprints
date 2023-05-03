@@ -12,14 +12,13 @@
 void eeprom_test (void);
 void eeprom_test_string(void);
 void eeprom_test_256(void);
-void eeprom_test_string_256(void)
-
+void eeprom_test_string_256(void);
 
 
 int main(void)
 {  LCD_PinsInit ();
 	LCD_Init();
-	eeprom_test_string();
+	eeprom_test_string_256();
 	return 0;
 }
 void eeprom_test(void)
@@ -49,11 +48,10 @@ void eeprom_test(void)
 		PORTD = val; 
 	}
 }
-
 void eeprom_test_string(void)
 {
 	u8 val = 0;
-	u8 string1[10]="atef";
+	u8 string1[10]="momen";
 	u8 string2[10];
 	
 	DDRD  = 0xFF;
@@ -66,9 +64,9 @@ void eeprom_test_string(void)
 	
 	eeprom_init();
 	
-    eeprom_WriteString_256(0x0311,string1);
+    eeprom_WriteString(0x0311,string1);
 	_delay_ms(10);
-	eeprom_ReadString_256(0x0311,string2);
+	eeprom_ReadString(0x0311,string2);
 	
 	LCD_SetCursor(1,0);
 	LCD_WriteString(string2);
@@ -109,7 +107,7 @@ void eeprom_test_256(void)
 void eeprom_test_string_256(void)
 {
 	u8 val = 0;
-	u8 string1[10]="atef";
+	u8 string1[10]="momen";
 	u8 string2[10];
 	
 	DDRD  = 0xFF;
