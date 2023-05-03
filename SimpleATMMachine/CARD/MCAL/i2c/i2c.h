@@ -8,7 +8,7 @@
 
 #ifndef I2C_H_
 #define I2C_H_ 
-#include "../dio/dio.h"
+#include "dio.h"
 /*------------------------------------------------------------------*/
 /* TWCR */
 #define TWINT   7
@@ -87,5 +87,8 @@ en_I2CError_t I2C_start(void);
 en_I2CError_t I2C_repeated_start(void);
 en_I2CError_t I2C_address_select(u8 adress,u8 rw);
 en_I2CError_t I2C_data_rw(u8 *data,u8 rw,u8 ack);
-void I2C_stop(void);
+void I2C_stop(void); 
+
+/*-----------------------------------*/
+ void I2C_WriteData(u8 data);
 #endif /* I2C_H_ */

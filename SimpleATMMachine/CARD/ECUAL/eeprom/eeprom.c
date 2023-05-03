@@ -4,90 +4,200 @@
  * Created: 5/1/2023 11:00:07 PM
  *  Author: atef
  */ 
+#define F_CPU 1000000
+#include <util/delay.h>
 #include "eeprom.h" 
+
 
 
 void eeprom_init()
 {
 	I2C_init();
 }
-en_I2CError_t eeprom_start()
+/*-----------------------16-------------------------------*/
+u8 EEPROM_writeByte(u16 u16addr, u8 u8data)
 {
-	return I2C_start();
+    /* Send the Start Bit */
+    if (I2C_start()==EVENT_OK)
+    {
+        /* Send the device address, we need to get A8 A9 A10 address bits from the
+         * memory location address and R/W=0 (write) */
+        if (I2C_address_select((u8)(0xA0 | ((u16addr & 0x0700)>>7)),write)==SLA_W_ACK_SENT)
+        {  
+            /* Send the required memory location address */
+            if (I2C_data_rw((u8)(u16addr),write,ACK)==DATA_WRITE_ACK_SENT)
+            {
+                /* write byte to eeprom */
+                if (I2C_data_rw(u8data,write,ACK)==DATA_WRITE_ACK_SENT)
+                {
+                    /* Send the Stop Bit */
+                    I2C_stop();
+                }
+            }
+        }
+    }
 }
-en_I2CError_t eeprom_s_address_write(u8 address)
+u8 EEPROM_readByte(u16 u16addr, u8 *u8data)
 {
-	 return I2C_address_select(address,write);
+    /* Send the Start Bit */
+    if (I2C_start()==EVENT_OK)
+    {
+        /* Send the device address, we need to get A8 A9 A10 address bits from the
+         * memory location address and R/W=0 (write) */
+        if (I2C_address_select((u8)(0xA0 | ((u16addr & 0x0700)>>7)),write)==SLA_W_ACK_SENT)
+        {
+            /* Send the required memory location address */
+            if (I2C_data_rw((u8)(u16addr),write,ACK)==DATA_WRITE_ACK_SENT)
+            {
+                /* Send the Repeated Start Bit */
+                if (I2C_repeated_start()==EVENT_OK)
+                {
+                    /* Send the device address, we need to get A8 A9 A10 address bits from the
+                     * memory location address and R/W=1 (Read) */
+
+                    if (I2C_address_select((u8)(0xA0 | ((u16addr & 0x0700)>>7)),read)==SLA_R_ACK_SENT)
+                    {
+                        /* Read Byte from Memory without send ACK */
+
+                        if (I2C_data_rw(u8data,read,NACK)==DATA_READ_NACK_SENT)
+                        {
+                            /* Send the Stop Bit */
+                            I2C_stop();
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
-en_I2CError_t eeprom_s_address_read(u8 address)
-{
-	return I2C_address_select(address,read);
+u8 eeprom_WriteString (u16 u16_Saddr, u8 *u8_Pdata)
+{ 
+		/*u8 len = 0;
+		
+		do
+		{
+			EEPROM_writeByte( u16_Saddr++,u8_Pdata[len]);
+			_delay_ms(20);
+			
+		}
+		while(u8_Pdata[len++] != '\0');*/
+		
+		
+				u8 i;
+				u16 ee_address=u16_Saddr;
+				for (i=0;u8_Pdata[i];i++)
+				{
+					EEPROM_writeByte(ee_address++,u8_Pdata[i]);
+					_delay_ms(20);
+				}
+				
+				EEPROM_writeByte(ee_address,'\0');
+				
+				
 }
-en_I2CError_t eeprom_write(u8 *data)
+u8 eeprom_ReadString (u16 u16_Saddr, u8 *u8_Pdata)
 {
-	return I2C_data_rw(data,write,ACK);
-}
-en_I2CError_t eeprom_readWACK(u8 *data)
-{
-	 return I2C_data_rw(data,read,ACK);
-}
-en_I2CError_t eeprom_eeprom_readWNACK(u8 *data)
-{
-	return I2C_data_rw(data,read,NACK);
-}
-void eeprom_stop()
-{
-	I2C_stop();
-} 
-en_I2CError_t eeprom_RepeatedStart()
-{
-	 return I2C_repeated_start();
+			u8 i = 0;
+			do
+			{
+				 EEPROM_readByte(u16_Saddr++,&u8_Pdata[i]);
+				_delay_ms(20);
+			} 
+			while(u8_Pdata[i++] != '\0');
+		
+				
+			
 }
 
-void eeprom_WriteByte(u8 *data ,u8 PageAddress,u8 ByteAddress )
+/*-----------------------256-------------------------------*/
+u8 EEPROM_writeByte_256(u16 u16_addr, u8 u8data)
 {
-		if (eeprom_start()==EVENT_OK)
-		{
-			if ( eeprom_s_address_write((0x50|PageAddress))==SLA_W_ACK_SENT)
-			{       
-				if(eeprom_write(ByteAddress)==DATA_WRITE_ACK_SENT)
-				{ 
-					if(eeprom_write(data)==DATA_WRITE_ACK_SENT)
-					{
-				
-					I2C_stop();
-					
-					}
-				}
-			}
-		}
-	
+    /* Send the Start Bit */
+    if (I2C_start()==EVENT_OK)
+    {
+        /* Send the device address, we need to get A8 A9 A10 address bits from the
+         * memory location address and R/W=0 (write) */
+        if (I2C_address_select(0xA0,write)==SLA_W_ACK_SENT)
+        {
+            /* Send the required memory location address */
+            if (I2C_data_rw((u8)((u16_addr >> 8) & 0xFF),write,ACK)==DATA_WRITE_ACK_SENT)
+            {
+                if (I2C_data_rw((u8)(u16_addr),write,ACK)==DATA_WRITE_ACK_SENT)
+                {
+
+                    /* write byte to eeprom */
+                    if (I2C_data_rw(u8data,write,ACK)==DATA_WRITE_ACK_SENT)
+                    {
+                        /* Send the Stop Bit */
+                        I2C_stop();
+                    }
+                }
+            }
+        }
+    }
 }
-void eeprom_ReadByte (u8 *ee_data ,u8 PageAddress,u8 ByteAddress )
+u8 EEPROM_readByte_256(u16 u16_addr, u8 *u8data)
 {
-			if (eeprom_start()==EVENT_OK)
-			{
-				if ( eeprom_s_address_write((0x50|PageAddress))==SLA_W_ACK_SENT)
+    /* Send the Start Bit */
+    if (I2C_start()==EVENT_OK)
+    {
+        /* Send the device address, we need to get A8 A9 A10 address bits from the
+         * memory location address and R/W=0 (write) */
+        if (I2C_address_select(0xA0,write)==SLA_W_ACK_SENT)
+        {
+            /* Send the required memory location address */
+            if (I2C_data_rw((u8)((u16_addr >> 8) & 0xFF),write,ACK)==DATA_WRITE_ACK_SENT)
+            {
+                if (I2C_data_rw((u8)(u16_addr),write,ACK)==DATA_WRITE_ACK_SENT)
+                {
+                    /* Send the Repeated Start Bit */
+                    if (I2C_repeated_start()==EVENT_OK)
+                    {
+                        /* Send the device address, we need to get A8 A9 A10 address bits from the
+                         * memory location address and R/W=1 (Read) */
+
+                        if (I2C_address_select(0xA0,read)==SLA_R_ACK_SENT)
+                        {
+                            /* Read Byte from Memory without send ACK */
+
+                            if (I2C_data_rw(u8data,read,NACK)==DATA_READ_NACK_SENT)
+                            {
+                                /* Send the Stop Bit */
+                                I2C_stop();
+
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+u8 eeprom_WriteString_256 (u16 u16_Saddr, u8 *u8_Pdata)
+{ 
+	
+				u8 i;
+				u16 ee_address=u16_Saddr;
+				for (i=0;u8_Pdata[i];i++)
 				{
-					if(eeprom_write(ByteAddress)==DATA_WRITE_ACK_SENT)
-					{
-						if(eeprom_write(ee_data)==DATA_WRITE_ACK_SENT)
-						{
-							if (eeprom_RepeatedStart()==REPEATED_START_NOT_SENT)
-							{
-								if ( eeprom_s_address_read((0x50|PageAddress))==SLA_R_ACK_SENT)
-								{
-									if(eeprom_eeprom_readWNACK(ee_data)==DATA_READ_NACK_SENT)
-									{
-										eeprom_stop();
-									}
-								}
-								
-							}
-							
-							
-						}
-					}
+					EEPROM_writeByte_256(ee_address++,u8_Pdata[i]);
+					_delay_ms(20);
 				}
-			}
+				
+				EEPROM_writeByte_256(ee_address,'\0');			
+				
+}
+u8 eeprom_ReadString_256 (u16 u16_Saddr, u8 *u8_Pdata)
+{
+			u8 i = 0;
+			do
+			{
+				 EEPROM_readByte_256(u16_Saddr++,&u8_Pdata[i]);
+				_delay_ms(20);
+			} 
+			while(u8_Pdata[i++] != '\0');
+		
+				
+			
 }

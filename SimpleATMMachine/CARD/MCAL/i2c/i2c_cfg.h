@@ -10,7 +10,7 @@
 #define I2C_CFG_H_
 
 #include "math.h"
-#define   F_CPU   16000000
+#define   F_CPU   1000000
 #define  SCL_CLK  400000
 
 /*************************************************************

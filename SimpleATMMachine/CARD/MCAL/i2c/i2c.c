@@ -15,13 +15,13 @@ u8 I2C_getStatus(void)
 	status = TWSR & 0xF8;
 	return status;
 }
-static void I2C_addressWrite(u8 I2C_address) {
+ void I2C_addressWrite(u8 I2C_address) {
 	 TWDR = I2C_address+0;
  }
-static void I2C_addressRead(u8 I2C_address) {
+void I2C_addressRead(u8 I2C_address) {
 	 TWDR = I2C_address+1;
  }
-static void I2C_WriteData(u8 data) {
+ void I2C_WriteData(u8 data) {
 	    /* Put data On TWI data Register */
     TWDR = data;
     /* 
@@ -30,7 +30,7 @@ static void I2C_WriteData(u8 data) {
 	 */ 
     TWCR = (1 << TWINT) | (1 << TWEN);
     /* Wait for TWINT flag set in TWCR Register(data is send successfully) */
-    while(!GET_BIT(TWCR,TWINT));
+    while(!READ_BIT(TWCR,TWINT));
  } 
 u8 I2C_readWithACK(void)
 {
@@ -59,11 +59,12 @@ u8 I2C_readWithNACK(void)
 }
  /*---------------------------------------------------------------*/
 void I2C_init(void)
-{
-    /*  pre-scaler TWPS=00 */
+{    TWBR = 0x02;
 	TWSR = 0x00;
+    /*  pre-scaler TWPS=00 */
+	//TWSR = 0x00;
    /* Bit Rate: 400.000 kbps using zero pre-scaler TWPS=00 and F_CPU=8Mhz */
-   TWBR=BITRATE(TWSR);   //  TWBR = 0x02;
+  // TWBR=BITRATE(TWSR);   //  TWBR = 0x02;
    
      /* Two Wire Bus address my address if any master device want to call me: 0x1 (used in case this MC is a slave device)
        General Call Recognition: Off */
@@ -90,9 +91,9 @@ en_I2CError_t I2C_repeated_start(void)
 { 
    
     TWCR = (1 << TWINT) | (1 << TWSTA) | (1 << TWEN);
-    while (TWCR&(1<<TWINT));
+ 	 while (!(TWCR & (1<<TWINT)));	
 
-	if (I2C_getStatus()==REP_START_STATE)
+	if (I2C_getStatus()!=REP_START_STATE)
 	{
 		return REPEATED_START_NOT_SENT;
 	} 
@@ -156,7 +157,7 @@ en_I2CError_t I2C_data_rw(u8 *data,u8 rw,u8 ack)
 	
 	 if (rw==write)
 	 {
-		I2C_WriteData(*data);
+		I2C_WriteData(data);
 		
 		 if (I2C_getStatus()==DATA_WRITE_ACK_STATE)
 		 {
