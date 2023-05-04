@@ -13,7 +13,7 @@ int main(void)
 	//SPI_initSlave();
 	//APP_lcdTEST();
     //APP_buttonTest();
-	APP_spiSlaveTest();
+	//APP_spiSlaveTest();
 	while (1) 
     {
     }

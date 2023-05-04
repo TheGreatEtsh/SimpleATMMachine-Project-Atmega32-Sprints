@@ -30,7 +30,7 @@ void I2C_addressRead(u8 I2C_address) {
 	 */ 
     TWCR = (1 << TWINT) | (1 << TWEN);
     /* Wait for TWINT flag set in TWCR Register(data is send successfully) */
-    while(!READ_BIT(TWCR,TWINT));
+    while(!GET_BIT(TWCR,TWINT));
  } 
 u8 I2C_readWithACK(void)
 {
@@ -41,7 +41,7 @@ u8 I2C_readWithACK(void)
 	 */ 
     TWCR = (1 << TWINT) | (1 << TWEN) | (1 << TWEA);
     /* Wait for TWINT flag set in TWCR Register (data received successfully) */
-    while(!READ_BIT(TWCR,TWINT));
+    while(!GET_BIT(TWCR,TWINT));
     /* Read Data */
     return TWDR;
 }
@@ -53,18 +53,18 @@ u8 I2C_readWithNACK(void)
 	 */
     TWCR = (1 << TWINT) | (1 << TWEN);
     /* Wait for TWINT flag set in TWCR Register (data received successfully) */
-    while(!READ_BIT(TWCR,TWINT));
+    while(!GET_BIT(TWCR,TWINT));
     /* Read Data */
     return TWDR;
 }
  /*---------------------------------------------------------------*/
 void I2C_init(void)
-{    TWBR = 0x02;
+{   TWBR = I2C_CFG_BITRATE;
 	TWSR = 0x00;
     /*  pre-scaler TWPS=00 */
 	//TWSR = 0x00;
    /* Bit Rate: 400.000 kbps using zero pre-scaler TWPS=00 and F_CPU=8Mhz */
-  // TWBR=BITRATE(TWSR);   //  TWBR = 0x02;
+   //TWBR=BITRATE(TWSR);   //  TWBR = 0x02;
    
      /* Two Wire Bus address my address if any master device want to call me: 0x1 (used in case this MC is a slave device)
        General Call Recognition: Off */

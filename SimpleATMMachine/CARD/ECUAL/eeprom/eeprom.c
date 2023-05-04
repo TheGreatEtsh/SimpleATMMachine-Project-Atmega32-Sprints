@@ -10,7 +10,7 @@
 
 
 
-void eeprom_init()
+void EEPROM_init()
 {
 	I2C_init();
 }
@@ -174,30 +174,27 @@ u8 EEPROM_readByte_256(u16 u16_addr, u8 *u8data)
         }
     }
 }
-u8 eeprom_WriteString_256 (u16 u16_Saddr, u8 *u8_Pdata)
+u8 EEPROM_writeString_256 (u16 u16_Saddr, u8 *u8_Pdata)
 { 
 	
-				u8 i;
-				u16 ee_address=u16_Saddr;
-				for (i=0;u8_Pdata[i];i++)
-				{
-					EEPROM_writeByte_256(ee_address++,u8_Pdata[i]);
-					_delay_ms(20);
-				}
-				
-				EEPROM_writeByte_256(ee_address,'\0');			
+	u8 i;
+	u16 ee_address=u16_Saddr;
+	for (i=0;u8_Pdata[i];i++)
+	{
+		EEPROM_writeByte_256(ee_address++,u8_Pdata[i]);
+		TIMER_delay(TIMER_2,20);
+	}
+	
+	EEPROM_writeByte_256(ee_address,'\0');			
 				
 }
-u8 eeprom_ReadString_256 (u16 u16_Saddr, u8 *u8_Pdata)
+u8 EEPROM_readString_256 (u16 u16_Saddr, u8 *u8_Pdata)
 {
-			u8 i = 0;
-			do
-			{
-				 EEPROM_readByte_256(u16_Saddr++,&u8_Pdata[i]);
-				_delay_ms(20);
-			} 
-			while(u8_Pdata[i++] != '\0');
-		
-				
-			
+	u8 i = 0;
+	do
+	{
+		EEPROM_readByte_256(u16_Saddr++,&u8_Pdata[i]);
+		TIMER_delay(TIMER_2,30);
+	} 
+	while(u8_Pdata[i++] != '\0');
 }

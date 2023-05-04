@@ -11,6 +11,7 @@
 
 
 #include "../dio/dio.h"
+#include "../timer/timer.h"
 #include "../registers.h"
 #include "../../SERVICE/bit_math.h"
 
@@ -20,7 +21,7 @@ void UART_SendChar(u8 data);
 
 u8 UART_GetChar(void);
 void UART_sendString(u8*);
-u8* UART_recieveString();
+void UART_recieveString(u8 *str);
 
 
 

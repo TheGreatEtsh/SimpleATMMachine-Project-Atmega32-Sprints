@@ -26,9 +26,9 @@
 
 
 
-#define  RS   0
+#define  RS   1
 #define  RW   2
-#define  EN   1
+#define  EN   3
 #define  D7   7
 #define  D6   6
 #define  D5   5

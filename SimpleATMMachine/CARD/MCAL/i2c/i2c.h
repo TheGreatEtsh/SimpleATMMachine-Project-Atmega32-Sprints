@@ -8,7 +8,7 @@
 
 #ifndef I2C_H_
 #define I2C_H_ 
-#include "dio.h"
+#include "../dio/dio.h"
 /*------------------------------------------------------------------*/
 /* TWCR */
 #define TWINT   7

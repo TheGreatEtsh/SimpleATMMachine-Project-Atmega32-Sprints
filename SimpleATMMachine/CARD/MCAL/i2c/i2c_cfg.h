@@ -21,7 +21,7 @@
  * 
  *************************************************************/
 /* Bit Rate: 400.000 kbps using zero pre-scaler TWPS=00 and F_CPU=8Mhz */
-#define I2C_CFG_BITRATE                         2
+#define I2C_CFG_BITRATE                         12
 #define I2C_CFG_PRESCALE                        0
 
 /*OR*/

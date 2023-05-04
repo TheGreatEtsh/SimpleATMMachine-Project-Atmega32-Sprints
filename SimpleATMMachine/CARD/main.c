@@ -9,10 +9,14 @@
 
 int main(void)
 {
-SPI_initMaster();
+	
  /* Replace with your application code */
+ 
+	APP_init();
+	APP_superLoop();
     while (1) 
     {
+		
     }
 }
 
