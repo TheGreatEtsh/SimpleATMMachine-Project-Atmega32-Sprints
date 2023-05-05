@@ -5,7 +5,7 @@
 //#include "..\Terminal\terminal.h"
 #include "..\SERVICE\standard_Types.h"
 
-#define DB_SIZE				200
+#define DB_SIZE				10
 #define MAX_TRANS_AMOUNT	5000
 /**********************************************************************************************************************
   *  GLOBAL DATA TYPES AND STRUCTURES
@@ -18,8 +18,8 @@ typedef enum EN_transState_t
 
 typedef struct ST_cardData_t
 {
-	u8 primaryAcountNumber[19];
-	u8 PIN[4];
+	u8 primaryAcountNumber[20];
+	u8 PIN[5];
 }ST_cardData_t;
 
 typedef struct ST_transaction_t
@@ -50,8 +50,8 @@ typedef struct ST_accountsDB_t
 
 
 
-EN_transState_t		SERVER_recieveTransactionData(f32 *remainingBalance, f32 transAmount, ST_cardData_t* cardData);
-EN_serverError_t	SERVER_isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t* accountRefrence);
+EN_transState_t		SERVER_recieveTransactionData(f32 *remainingBalance, f32 transAmount, ST_cardData_t *cardData);
+EN_serverError_t	SERVER_isValidAccount(ST_cardData_t *cardData, ST_accountsDB_t* accountRefrence);
 EN_serverError_t	SERVER_isBlockedAccount(ST_accountsDB_t* accountRefrence);
 EN_serverError_t	SERVER_isAmountAvailable(f32 f32_a_transactionAmount, ST_accountsDB_t* accountRefrence);
 EN_serverError_t	SERVER_saveTransaction(ST_transaction_t* transData);

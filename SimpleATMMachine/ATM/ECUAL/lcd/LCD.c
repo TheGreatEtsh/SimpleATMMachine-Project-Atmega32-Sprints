@@ -303,7 +303,7 @@ void LCD_CustomChar(u8 u8_a_loc,u8 *u8_a_pattern)
 *******************************************************************************/
  void LCD_PinsInit ()
  {
-	 DIO_init(LCD_PORT,0,OUTPUT);
+	 //DIO_init(LCD_PORT,0,OUTPUT);
 	 DIO_init(LCD_PORT,1,OUTPUT);
 	 DIO_init(LCD_PORT,2,OUTPUT);
 	 DIO_init(LCD_PORT,3,OUTPUT);

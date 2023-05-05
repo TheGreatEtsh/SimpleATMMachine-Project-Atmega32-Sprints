@@ -38,7 +38,7 @@ EN_serverError_t SERVER_isValidAccount(ST_cardData_t* cardData, ST_accountsDB_t*
 	if (compare)
 	{
 		functionReturn = ACCOUNT_NOT_FOUND;
-		accountRefrence = NULL;
+		//accountRefrence = NULL;
 	}
 	else
 	{

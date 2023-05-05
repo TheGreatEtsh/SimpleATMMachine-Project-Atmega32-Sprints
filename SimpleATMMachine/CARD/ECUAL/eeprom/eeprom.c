@@ -36,6 +36,7 @@ u8 EEPROM_writeByte(u16 u16addr, u8 u8data)
             }
         }
     }
+	return 0;
 }
 u8 EEPROM_readByte(u16 u16addr, u8 *u8data)
 {
@@ -70,6 +71,7 @@ u8 EEPROM_readByte(u16 u16addr, u8 *u8data)
             }
         }
     }
+	return 0;
 }
 u8 eeprom_WriteString (u16 u16_Saddr, u8 *u8_Pdata)
 { 
@@ -94,6 +96,8 @@ u8 eeprom_WriteString (u16 u16_Saddr, u8 *u8_Pdata)
 				
 				EEPROM_writeByte(ee_address,'\0');
 				
+				return 0;
+				
 				
 }
 u8 eeprom_ReadString (u16 u16_Saddr, u8 *u8_Pdata)
@@ -107,7 +111,7 @@ u8 eeprom_ReadString (u16 u16_Saddr, u8 *u8_Pdata)
 			while(u8_Pdata[i++] != '\0');
 		
 				
-			
+			return 0;
 }
 
 /*-----------------------256-------------------------------*/
@@ -136,6 +140,8 @@ u8 EEPROM_writeByte_256(u16 u16_addr, u8 u8data)
             }
         }
     }
+	
+	return 0;
 }
 u8 EEPROM_readByte_256(u16 u16_addr, u8 *u8data)
 {
@@ -173,6 +179,7 @@ u8 EEPROM_readByte_256(u16 u16_addr, u8 *u8data)
             }
         }
     }
+	return 0;
 }
 u8 EEPROM_writeString_256 (u16 u16_Saddr, u8 *u8_Pdata)
 { 
@@ -186,6 +193,7 @@ u8 EEPROM_writeString_256 (u16 u16_Saddr, u8 *u8_Pdata)
 	}
 	
 	EEPROM_writeByte_256(ee_address,'\0');			
+	return 0;
 				
 }
 u8 EEPROM_readString_256 (u16 u16_Saddr, u8 *u8_Pdata)
@@ -197,4 +205,6 @@ u8 EEPROM_readString_256 (u16 u16_Saddr, u8 *u8_Pdata)
 		TIMER_delay(TIMER_2,30);
 	} 
 	while(u8_Pdata[i++] != '\0');
+	
+	return 0;
 }

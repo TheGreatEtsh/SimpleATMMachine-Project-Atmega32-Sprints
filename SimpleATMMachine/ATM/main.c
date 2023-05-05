@@ -14,6 +14,9 @@ int main(void)
 	//APP_lcdTEST();
     //APP_buttonTest();
 	//APP_spiSlaveTest();
+	APP_init();
+	APP_superLoop();
+	
 	while (1) 
     {
     }

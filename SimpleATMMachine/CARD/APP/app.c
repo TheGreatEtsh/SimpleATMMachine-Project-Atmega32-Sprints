@@ -29,7 +29,9 @@ void APP_init(void)
 	SPI_initMaster();	
 	TIMER_delay(TIMER_2, 100);
 	SPI_startTransmission();
-	SPI_transmitByte(0);
+	while (SPI_transmitByte(0xAA) != 0x55)
+	TIMER_delay(TIMER_2,10);
+	
 	TIMER_delay(TIMER_2, 100);
 }
 
@@ -97,8 +99,8 @@ void APP_superLoop(void)
 				
 				/*Step 3 -> in PROGRAMMING_MODE step 3 -> save PAN in the EEPROM from address 0x0010*/
 				case PRO_SAVING_PAN:
-				//EEPROM_writeString_256(0x10,PAN);
-				LCD_WriteString(PAN);
+				EEPROM_writeString_256(0x10,PAN);
+				//LCD_WriteString(PAN);
 				programmingState = PRO_RECEIVING_PIN;
 				break;
 				
@@ -169,7 +171,7 @@ void APP_superLoop(void)
 				/*Step 3 -> in PROGRAMMING_MODE step 12 -> if matching save PIN -secondCopy- in EEPROM in address 0x0030*/
 				else
 				{
-					//EEPROM_writeString_256(PIN_ADDRESS,PIN);
+					EEPROM_writeString_256(PIN_ADDRESS,PIN);
 				
 					/*Step 3 -> in PROGRAMMING_MODE step 13 -> go to USER_MODE*/
 					cardMode = USER_MODE;
@@ -212,17 +214,27 @@ void APP_superLoop(void)
 				counter = 0;
 				while(PAN[counter])
 				{
-					SPI_transmitByte(PAN[counter]);
+					if(SPI_transmitByte(PAN[counter]) == 0x55)
+					{
+						counter++;
+					}
 					TIMER_delay(TIMER_2, 10);
-					counter++;
+					
 				}
+				while(SPI_transmitByte(0) == 0x55)
+				TIMER_delay(TIMER_2,10);
+				
 				counter = 0;
 				while(counter < 4)
 				{
-					SPI_transmitByte(PIN[counter]);
+					if(SPI_transmitByte(PIN[counter]) == 0x55)
+					{
+						counter++;
+					}
 					TIMER_delay(TIMER_2, 10);
-					counter++;
 				}
+				while(SPI_transmitByte(0) == 0x55)
+				TIMER_delay(TIMER_2,10);
 			}
 			/*Step 4 -> in USER_MODE step 4 -> If = 2, go to PROGRAMMING_MODE INITIAL_STATE*/
 			else if(buffer == '2')
@@ -274,9 +286,10 @@ void APP_testingEEPROM (void)
 
 void APP_deleteAll (void)
 {
-	for (u32 i = 0; i<0xFFFF ; i++)
+	for (u32 i = 0; i <= 0xFF ; i++)
 	{
 		EEPROM_writeByte_256((u16)i,0xFF);
+		TIMER_delay(TIMER_2,20);
 	}
 }
 

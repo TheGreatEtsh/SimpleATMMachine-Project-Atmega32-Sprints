@@ -15,5 +15,6 @@ void TRIGGER_init(void)
 void TRIGGER_triggerMCU(void)
 {
 	DIO_write(TRIGGER_PORT, TRIGGER_PIN, HIGH);
+	TIMER_delay(TIMER_2, 200);
 	DIO_write(TRIGGER_PORT, TRIGGER_PIN, LOW);
 }

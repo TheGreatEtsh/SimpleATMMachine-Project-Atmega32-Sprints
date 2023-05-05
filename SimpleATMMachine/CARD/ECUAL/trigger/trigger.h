@@ -10,6 +10,7 @@
 #define TRIGGER_H_
 
 #include "../../MCAL/dio/dio.h"
+#include "../../MCAL/timer/timer.h"
 #define TRIGGER_PORT				PORT_B 
 #define TRIGGER_PIN					0
 

@@ -11,9 +11,9 @@
 
 
 
+extern ST_accountsDB_t accountsDB[DB_SIZE] ;
 
-
-u8 buttonState = 0, pressingCounter = 0;
+u8 buttonState, pressingCounter;
 u8 atmState = RESETTING_STATE;
 
 
@@ -42,17 +42,24 @@ void APP_init (void)
 	EXTINT_setCallBackInt(INT_0, atmTriggered);
 	TIMER_setCallBack(TIMER_2, stillPressed);
 	
+	
+	while (SPI_transmitByte(0x55) != 0xAA)
+	TIMER_delay(TIMER_2,10);
+	
+	while (SPI_transmitByte(0x55) != 0xAA)
+	TIMER_delay(TIMER_2,10);
+	
 }
 
 void APP_superLoop (void)
 {
-	volatile u8 keyPressed = 0, counter = 0, byteReceived = 0, trials = 0, digits, copy = 0, location = 0;
+	u8 keyPressed = 0, counter = 0, byteReceived = 0, trials = 0, digits = 0, location = 0;
 	f32 amountEntered = 1, remainingBalance = 0;
+	u32 copy = 0;
 	u8 transAmount[9] = {"00000.00"} ;
-	u8 pinEntered[4] = {0};
-	u8 PIN[4] = {0};
-	
-	ST_cardData_t cardData;
+	u8 pinEntered[5] = {0};
+
+	ST_cardData_t cardHolderData = {{0,0}};
 	EN_transState_t transState = APPROVED;
 	
 	while (1)
@@ -61,6 +68,7 @@ void APP_superLoop (void)
 		{
 			case RESETTING_STATE:
 			/*step 1 -> Welcome message is displayed for 1s "Welcome to ATM"*/
+			LCD_Clear();
 			LCD_WriteString("Welcome to ATM");
 			TIMER_delay(TIMER_2, 1000);
 			LCD_Clear();
@@ -86,7 +94,7 @@ void APP_superLoop (void)
 			keyPressed = KEYPAD_read();
 			
 			/*step 6 -> Pin is only 4 numeric characters*/
-			
+			counter = 0;
 			while(counter < 4)
 			{
 				keyPressed = KEYPAD_read();
@@ -124,7 +132,7 @@ void APP_superLoop (void)
 			while( atmState == PIN_STATE)			
 			{
 				
-				pressingCounter = 0;
+				//pressingCounter = 0;
 				BUTTON_read(BUTTON_1_PORT, BUTTON_1_Pin, &buttonState);
 				if (buttonState)
 				{
@@ -133,34 +141,59 @@ void APP_superLoop (void)
 					if (buttonState)
 					{
 						TIMER_setTime(TIMER_2,100);
+						TIMER_start(TIMER_2);
 						TIMER_enableInterrupt(TIMER_2);
 						while (buttonState)
 						{
 							BUTTON_read(BUTTON_1_PORT, BUTTON_1_Pin, &buttonState);
 						}
-						if (pressingCounter >= 20)
+						if (pressingCounter >= 10)
 						{
-							atmState = RECEIVING_STATE;
+							atmState = VALIDATING_PIN_STATE;
+							
 						}
 						else
 						{
 							/*DO NOTHING*/
 						}
 						TIMER_stopInterrupt(TIMER_2);
+						TIMER_stop(TIMER_2);
 						pressingCounter = 0;
 					}
 				}
 			}
+			
 			break;
 			
 			case RECEIVING_STATE:
+			LCD_Clear();
+			LCD_WriteString("Receiving");
+			TIMER_delay(TIMER_2,1000);
+			//LCD_Clear();
 			counter = 0;
 			while (counter < 19)
 			{
-				byteReceived  = SPI_transmitByte(0x00);
-				if(byteReceived)
+				//cardHolderData.primaryAcountNumber[counter] = accountsDB[0].primaryAccountNumber[counter];
+
+				byteReceived  = SPI_transmitByte(0x55);
+				TIMER_delay(TIMER_2,10);
+				//if(byteReceived >= '0' || byteReceived <= '9')
+				if (byteReceived)
 				{
-					cardData.primaryAcountNumber[counter] = byteReceived;
+					if (counter)
+					{
+						cardHolderData.primaryAcountNumber[counter-1] = byteReceived;
+						
+					}
+					if (counter == 16)
+					{
+						TIMER_delay(TIMER_2,1000);
+				//		LCD_Clear();
+					}
+					
+					//LCD_WriteNumber(counter);
+					//LCD_WriteChar(byteReceived);
+					
 					counter++;
 				}
 				else
@@ -168,16 +201,37 @@ void APP_superLoop (void)
 					break;
 				}
 			}
+			cardHolderData.primaryAcountNumber[counter] = 0;
+			
+			
+			//LCD_WriteString(cardHolderData.primaryAcountNumber);
+			TIMER_delay(TIMER_2,1000);
+			//LCD_SetCursor(1,0);
 			counter = 0;
 			while (counter < 4)
 			{
-				byteReceived  = SPI_transmitByte(0x00);	
-				cardData.PIN[counter] = byteReceived;
-				counter++;
+				byteReceived  = SPI_transmitByte(0x55);	
+				if (byteReceived >= '0' || byteReceived <= '9')
+				{
+					//LCD_WriteChar(byteReceived);
+					cardHolderData.PIN[counter] = byteReceived;
+					counter++;
+					
+				}
+				
+				TIMER_delay(TIMER_2,10);
 				
 			}
+			cardHolderData.PIN[5] = 0;
 			
-			atmState = VALIDATING_PIN_STATE;
+			
+			//LCD_WriteString(cardHolderData.primaryAcountNumber);
+			//LCD_SetCursor(1,0);
+			//LCD_WriteString(cardHolderData.PIN);
+			TIMER_delay(TIMER_2, 1000);
+			
+			
+			atmState = PIN_STATE;
 			
 			break;
 			
@@ -185,10 +239,11 @@ void APP_superLoop (void)
 			
 			/*step 8 -> validate the pin*/
 			case VALIDATING_PIN_STATE:
+			
 			counter = 0;
 			while (counter < 4)
 			{
-				if(pinEntered[counter] == PIN [counter])
+				if(pinEntered[counter] == cardHolderData.PIN [counter])
 				{
 					counter ++;	
 				}
@@ -205,7 +260,7 @@ void APP_superLoop (void)
 				atmState = PIN_STATE;
 				trials++;
 			/*step 10 -> if trails exceeded go to ALARM_STATE*/
-				if (trials == 2)
+				if (trials > 2)
 				{
 					atmState = ALARM_STATE;
 				}
@@ -219,17 +274,20 @@ void APP_superLoop (void)
 
 			/*step 12 -> "Enter Amount"  is displayed in the first line*/
 			case WITHDRAWL_STATE:
+			
+			
 			LCD_Clear();
 			LCD_WriteString("Enter Amount");
-			//LCD_WriteNumber(amountEntered);;
-			
 			/*step 12 -> input your withdrawal using keypad and written in the form of 0000.00*/
 			LCD_SetCursor(1,0);
 			LCD_WriteString(transAmount);
 
+			keyPressed = 0;
+			
 			keyPressed = KEYPAD_read();
 			
 			counter	= 0;
+
 			
 			while (keyPressed == 0)
 			{
@@ -253,9 +311,6 @@ void APP_superLoop (void)
 						copy = amountEntered;
 						digits++;
 					}
-					
-					
-					
 					
 					for (counter = 0; counter < digits; counter++)
 					{
@@ -294,10 +349,10 @@ void APP_superLoop (void)
 						keyPressed = 1;
 						if (pressingCounter >= 10)
 						{
-							/*step 13 -> Press the Zero\Enter button for 2 secs to accept funds*/
 							/*amount accepted*/
 							amountEntered /= 100;
 							atmState = CHECKING_STATE;
+							
 						}
 						else
 						{
@@ -336,15 +391,18 @@ void APP_superLoop (void)
 						TIMER_stop(TIMER_2);
 						pressingCounter = 0;
 					}
-				}		
+				}
+				
+				
+				
 			}
+			
 			break;		
 			
 			/*step 14 -> Check on the card data*/
 			case CHECKING_STATE:
-			transState = SERVER_recieveTransactionData(&remainingBalance, amountEntered, &cardData);
 			
-			break;
+			transState = SERVER_recieveTransactionData(&remainingBalance, amountEntered, &cardHolderData);
 			
 			/*step 15 -> if failed prints "This is a fraud card" if card pan is not found + Alarm
 										  "This card is stolen" if the card is blocked + Alarm
@@ -449,6 +507,9 @@ void APP_superLoop (void)
 			break;
 			
 			case ALARM_STATE:
+			LCD_Clear();
+			LCD_WriteString("ALARM");
+			
 			BUZZER_on(BUZZER_0);
 			/*Disable interrupts*/
 			
@@ -688,5 +749,5 @@ void	stillPressed(void)
 
 void	atmTriggered(void)
 {
-	atmState = PIN_STATE;
+	atmState = RECEIVING_STATE;
 }

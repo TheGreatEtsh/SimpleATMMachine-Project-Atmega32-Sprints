@@ -11,9 +11,10 @@ int main(void)
 {
 	
  /* Replace with your application code */
- 
-	APP_init();
-	APP_superLoop();
+	
+ 	APP_init();
+ 	//APP_deleteAll();
+ 	APP_superLoop();
     while (1) 
     {
 		
