@@ -4,6 +4,8 @@
 
 APP\app.c
 
+APP\server.c
+
 ECUAL\button\button.c
 
 ECUAL\buzzer\buzzer.c

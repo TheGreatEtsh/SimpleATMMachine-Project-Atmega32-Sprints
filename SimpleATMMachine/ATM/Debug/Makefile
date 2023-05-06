@@ -50,6 +50,7 @@ SUBDIRS :=  \
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../APP/app.c \
+../APP/server.c \
 ../ECUAL/button/button.c \
 ../ECUAL/buzzer/buzzer.c \
 ../ECUAL/keypad/keypad.c \
@@ -69,6 +70,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 APP/app.o \
+APP/server.o \
 ECUAL/button/button.o \
 ECUAL/buzzer/buzzer.o \
 ECUAL/keypad/keypad.o \
@@ -81,6 +83,7 @@ MCAL/timer/timer.o
 
 OBJS_AS_ARGS +=  \
 APP/app.o \
+APP/server.o \
 ECUAL/button/button.o \
 ECUAL/buzzer/buzzer.o \
 ECUAL/keypad/keypad.o \
@@ -93,6 +96,7 @@ MCAL/timer/timer.o
 
 C_DEPS +=  \
 APP/app.d \
+APP/server.d \
 ECUAL/button/button.d \
 ECUAL/buzzer/buzzer.d \
 ECUAL/keypad/keypad.d \
@@ -105,6 +109,7 @@ MCAL/timer/timer.d
 
 C_DEPS_AS_ARGS +=  \
 APP/app.d \
+APP/server.d \
 ECUAL/button/button.d \
 ECUAL/buzzer/buzzer.d \
 ECUAL/keypad/keypad.d \
@@ -130,6 +135,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 APP/app.o: ../APP/app.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+APP/server.o: ../APP/server.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
