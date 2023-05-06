@@ -13,8 +13,14 @@ void SPI_initMaster(void)
 	DIO_init(PORT_B,6,INPUT);
 	DIO_write(PORT_B,4,HIGH);
 	
+	
 	SET_BIT(SPCR,SPE);
 	SET_BIT(SPCR,MSTR);
+	
+	CLR_BIT(SPSR, SPI2X);
+	
+	SET_BIT(SPCR,SPR0);
+	SET_BIT(SPCR,SPR1);
 
 }
 void SPI_initSlave(void)

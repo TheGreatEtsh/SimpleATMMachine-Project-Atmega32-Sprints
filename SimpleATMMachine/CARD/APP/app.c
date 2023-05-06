@@ -29,6 +29,10 @@ void APP_init(void)
 	SPI_initMaster();	
 	TIMER_delay(TIMER_2, 100);
 	SPI_startTransmission();
+	
+	while (SPI_transmitByte(0xAA) != 0x55)
+	TIMER_delay(TIMER_2,10);
+	
 	while (SPI_transmitByte(0xAA) != 0x55)
 	TIMER_delay(TIMER_2,10);
 	
@@ -214,27 +218,32 @@ void APP_superLoop(void)
 				counter = 0;
 				while(PAN[counter])
 				{
-					if(SPI_transmitByte(PAN[counter]) == 0x55)
+					if(SPI_transmitByte(PAN[counter]) == 0xBB)
 					{
 						counter++;
 					}
 					TIMER_delay(TIMER_2, 10);
 					
 				}
-				while(SPI_transmitByte(0) == 0x55)
+				while(SPI_transmitByte(0) == 0xBB)
 				TIMER_delay(TIMER_2,10);
 				
 				counter = 0;
 				while(counter < 4)
 				{
-					if(SPI_transmitByte(PIN[counter]) == 0x55)
+					if(SPI_transmitByte(PIN[counter]) == 0xCC)
 					{
 						counter++;
 					}
 					TIMER_delay(TIMER_2, 10);
 				}
-				while(SPI_transmitByte(0) == 0x55)
+				while(SPI_transmitByte(0) == 0xCC)
 				TIMER_delay(TIMER_2,10);
+				
+				TIMER_delay(TIMER_2,5000);
+				while(SPI_transmitByte(0xDD) != 0xDD)
+				TIMER_delay(TIMER_2,100);
+				
 			}
 			/*Step 4 -> in USER_MODE step 4 -> If = 2, go to PROGRAMMING_MODE INITIAL_STATE*/
 			else if(buffer == '2')

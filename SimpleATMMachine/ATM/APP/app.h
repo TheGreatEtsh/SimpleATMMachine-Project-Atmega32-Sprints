@@ -36,4 +36,7 @@ void APP_buttonTest(void);
 void atmTriggered(void);
 void APP_lcdTEST(void);
 void APP_spiSlaveTest(void);
+void APP_comTesting (void);
+void doNothing(void);
+
 #endif /* APP_H_ */

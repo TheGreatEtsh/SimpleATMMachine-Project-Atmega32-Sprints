@@ -49,6 +49,9 @@ void APP_init (void)
 	while (SPI_transmitByte(0x55) != 0xAA)
 	TIMER_delay(TIMER_2,10);
 	
+	while (SPI_transmitByte(0x55) != 0xAA)
+	TIMER_delay(TIMER_2,10);
+	
 }
 
 void APP_superLoop (void)
@@ -74,7 +77,7 @@ void APP_superLoop (void)
 			LCD_Clear();
 			/*step 2 -> "Insert a Card" message is displayed in the first line*/
 			LCD_WriteString("Insert a Card");
-			TIMER_delay(TIMER_2, 1000);
+			//TIMER_delay(TIMER_2, 1000);
 			
 			/*step 3 -> BLOCKED_STATE till interrupt triggered which tiggers PIN_STATE*/
 			atmState = BLOCKED_STATE;
@@ -169,66 +172,66 @@ void APP_superLoop (void)
 			LCD_Clear();
 			LCD_WriteString("Receiving");
 			TIMER_delay(TIMER_2,1000);
-			//LCD_Clear();
+			
 			counter = 0;
-			while (counter < 19)
+			while (SPI_transmitByte(0x55) == 0)
+			TIMER_delay(TIMER_2,10);
+			
+			while (counter < 20)
 			{
-				//cardHolderData.primaryAcountNumber[counter] = accountsDB[0].primaryAccountNumber[counter];
-
-				byteReceived  = SPI_transmitByte(0x55);
-				TIMER_delay(TIMER_2,10);
-				//if(byteReceived >= '0' || byteReceived <= '9')
-				if (byteReceived)
+				byteReceived  = SPI_transmitByte(0xBB);
+				if (byteReceived >= '0' || byteReceived <= '9')
 				{
-					if (counter)
-					{
-						cardHolderData.primaryAcountNumber[counter-1] = byteReceived;
-						
-					}
-					if (counter == 16)
-					{
-						TIMER_delay(TIMER_2,1000);
-				//		LCD_Clear();
-					}
 					
-					//LCD_WriteNumber(counter);
-					//LCD_WriteChar(byteReceived);
-					
+					cardHolderData.primaryAcountNumber[counter] = byteReceived;
 					counter++;
+					
 				}
-				else
+				else if (byteReceived == 0)
 				{
 					break;
 				}
+				
+				byteReceived = 255;
+				
+				TIMER_delay(TIMER_2,10);
+				
 			}
 			cardHolderData.primaryAcountNumber[counter] = 0;
 			
-			
-			//LCD_WriteString(cardHolderData.primaryAcountNumber);
-			TIMER_delay(TIMER_2,1000);
-			//LCD_SetCursor(1,0);
 			counter = 0;
-			while (counter < 4)
+			byteReceived = 255;
+			
+			while (SPI_transmitByte(0x55) == 0)
+			TIMER_delay(TIMER_2,10);
+			
+			while (counter < 5)
 			{
-				byteReceived  = SPI_transmitByte(0x55);	
+				byteReceived  = SPI_transmitByte(0xCC);
 				if (byteReceived >= '0' || byteReceived <= '9')
 				{
-					//LCD_WriteChar(byteReceived);
+
 					cardHolderData.PIN[counter] = byteReceived;
 					counter++;
 					
 				}
+				else if (byteReceived == 0)
+				{
+					break;
+				}
+				
+				byteReceived = 255;
 				
 				TIMER_delay(TIMER_2,10);
 				
 			}
 			cardHolderData.PIN[5] = 0;
 			
-			
+			//LCD_Clear();
 			//LCD_WriteString(cardHolderData.primaryAcountNumber);
 			//LCD_SetCursor(1,0);
 			//LCD_WriteString(cardHolderData.PIN);
-			TIMER_delay(TIMER_2, 1000);
+			//TIMER_delay(TIMER_2, 1000);
 			
 			
 			atmState = PIN_STATE;
@@ -269,6 +272,16 @@ void APP_superLoop (void)
 			else
 			{
 				atmState = WITHDRAWL_STATE;
+				transAmount[0] = '0';
+				transAmount[1] = '0';
+				transAmount[2] = '0';
+				transAmount[3] = '0';
+				transAmount[4] = '0';
+				transAmount[5] = '.';
+				transAmount[6] = '0';
+				transAmount[7] = '0';
+				amountEntered = 1;
+				digits = 0;
 			}
 			break;
 
@@ -401,9 +414,12 @@ void APP_superLoop (void)
 			
 			/*step 14 -> Check on the card data*/
 			case CHECKING_STATE:
-			
+			if(amountEntered == 0.01)
+			{
+				amountEntered = 0;
+			}
 			transState = SERVER_recieveTransactionData(&remainingBalance, amountEntered, &cardHolderData);
-			
+			amountEntered = 1;
 			/*step 15 -> if failed prints "This is a fraud card" if card pan is not found + Alarm
 										  "This card is stolen" if the card is blocked + Alarm
 										  "Maximum Limit is Exceeded" if the required amount exceeds the maximum amount limit
@@ -500,7 +516,9 @@ void APP_superLoop (void)
 			TIMER_delay(TIMER_2,1000);
 			
 			/*step 19 -> Send a massage to card ecu to start*/
-			SPI_transmitByte(0x55);
+			
+			while(SPI_transmitByte(0xDD) != 0xDD)
+			TIMER_delay(TIMER_2,10);
 			
 			/*step 20 -> go to RESETTING_STATE*/
 			atmState = RESETTING_STATE;
@@ -511,7 +529,7 @@ void APP_superLoop (void)
 			LCD_WriteString("ALARM");
 			
 			BUZZER_on(BUZZER_0);
-			/*Disable interrupts*/
+			EXTINT_setCallBackInt(INT_0,doNothing);
 			
 			
 			break;
@@ -750,4 +768,149 @@ void	stillPressed(void)
 void	atmTriggered(void)
 {
 	atmState = RECEIVING_STATE;
+}
+
+void doNothing(void)
+{
+	while (1)
+	{
+	}
+}
+
+void APP_comTesting (void)
+{
+	u8 counter = 0, byteReceived = 0;
+	//u8 keyPressed = 0, counter = 0, byteReceived = 0, trials = 0, digits = 0, location = 0;
+	//f32 amountEntered = 1, remainingBalance = 0;
+	//u32 copy = 0;
+	//u8 transAmount[9] = {"00000.00"} ;
+	//u8 pinEntered[5] = {0};
+
+	ST_cardData_t cardHolderData = {{0,0}};
+	//EN_transState_t transState = APPROVED;
+	
+	TIMER_init(TIMER_2);
+	TIMER_stopInterrupt(TIMER_2);
+	TIMER_start(TIMER_2);
+
+	
+	LCD_PinsInit();
+	LCD_Init();
+	
+//	LCD_WriteString("Hello World");
+	
+	SPI_initSlave();
+	
+	
+	while (SPI_transmitByte(0x55) != 0xAA)
+	TIMER_delay(TIMER_2,10);
+	
+	while (SPI_transmitByte(0x55) != 0xAA)
+	TIMER_delay(TIMER_2,10);
+	
+	while (1)
+	{
+		LCD_Clear();
+		LCD_WriteString("Receiving");
+		TIMER_delay(TIMER_2,1000);
+		LCD_Clear();
+		counter = 0;
+		while (SPI_transmitByte(0x55) == 0)
+		TIMER_delay(TIMER_2,10);
+		while (counter < 20)
+		{
+			byteReceived  = SPI_transmitByte(0xBB);
+			if (byteReceived >= '0' || byteReceived <= '9')
+			{
+				//LCD_WriteChar(byteReceived);
+				//if (counter)
+				cardHolderData.primaryAcountNumber[counter] = byteReceived;
+				counter++;
+				
+			}
+			else if (byteReceived == 0)
+			{
+				break;
+			}
+			
+			byteReceived = 255;
+			
+			TIMER_delay(TIMER_2,10);
+			
+		}
+
+// 		while (counter < 19)
+// 		{
+// 			//cardHolderData.primaryAcountNumber[counter] = accountsDB[0].primaryAccountNumber[counter];
+// 	
+// 			byteReceived  = SPI_transmitByte(0xBB);
+// 			TIMER_delay(TIMER_2,10);
+// 			if(byteReceived >= '0' || byteReceived <= '9')
+// 			//if (byteReceived)
+// 			{
+// 				//if (counter)
+// 				//{
+// 					cardHolderData.primaryAcountNumber[counter] = byteReceived;
+// 					
+// 				//}
+// 				//else
+// 				//{
+// 				//	
+// 				//}
+// 				
+// 				//LCD_WriteNumber(counter);
+// 				LCD_WriteChar(byteReceived);
+// 				
+// 				counter++;
+// 			}
+// 			else if (byteReceived == 0)
+// 			{
+// 				break;
+// 			}
+// 			byteReceived = 255;
+// 		}
+		cardHolderData.primaryAcountNumber[counter] = 0;
+		
+		
+		//LCD_WriteString(cardHolderData.primaryAcountNumber);
+		//TIMER_delay(TIMER_2,1000);
+		//LCD_SetCursor(1,0);
+		counter = 0;
+		byteReceived = 255;
+		
+		while (SPI_transmitByte(0x55) == 0)
+		TIMER_delay(TIMER_2,10);
+		while (counter < 5)
+		{
+			byteReceived  = SPI_transmitByte(0xCC);
+			if (byteReceived >= '0' || byteReceived <= '9')
+			{
+				//LCD_WriteChar(byteReceived);
+				//if (counter)
+				cardHolderData.PIN[counter] = byteReceived;
+				counter++;
+				
+			}
+			else if (byteReceived == 0)
+			{
+				break;
+			}
+			
+			byteReceived = 255;
+			
+			TIMER_delay(TIMER_2,10);
+			
+		}
+		//TIMER_delay(TIMER_2, 2000);
+		cardHolderData.PIN[5] = 0;
+		
+		
+		LCD_WriteString(cardHolderData.primaryAcountNumber);
+		LCD_SetCursor(1,0);
+		LCD_WriteString(cardHolderData.PIN);
+		TIMER_delay(TIMER_2, 5000);
+		
+		
+	}
+	
 }

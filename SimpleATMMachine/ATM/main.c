@@ -16,7 +16,7 @@ int main(void)
 	//APP_spiSlaveTest();
 	APP_init();
 	APP_superLoop();
-	
+	//APP_comTesting();
 	while (1) 
     {
     }
