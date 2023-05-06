@@ -38,8 +38,9 @@ SUBDIRS :=  \
 ../Debug/APP/ \
 ../ECUAL/eeprom \
 ../ECUAL/esp8266 \
+../ECUAL/lcd \
 ../ECUAL/trigger \
-../MCAL/dio \
+../MCAL/dio/ \
 ../MCAL/uart \
 ../MCAL/spi \
 ../MCAL/i2c \
@@ -53,6 +54,7 @@ SUBDIRS :=  \
 C_SRCS +=  \
 ../APP/app.c \
 ../ECUAL/eeprom/eeprom.c \
+../ECUAL/lcd/LCD.c \
 ../ECUAL/trigger/trigger.c \
 ../main.c \
 ../MCAL/dio/dio.c \
@@ -71,6 +73,7 @@ ASM_SRCS +=
 OBJS +=  \
 APP/app.o \
 ECUAL/eeprom/eeprom.o \
+ECUAL/lcd/LCD.o \
 ECUAL/trigger/trigger.o \
 main.o \
 MCAL/dio/dio.o \
@@ -82,6 +85,7 @@ MCAL/uart/uart.o
 OBJS_AS_ARGS +=  \
 APP/app.o \
 ECUAL/eeprom/eeprom.o \
+ECUAL/lcd/LCD.o \
 ECUAL/trigger/trigger.o \
 main.o \
 MCAL/dio/dio.o \
@@ -93,6 +97,7 @@ MCAL/uart/uart.o
 C_DEPS +=  \
 APP/app.d \
 ECUAL/eeprom/eeprom.d \
+ECUAL/lcd/LCD.d \
 ECUAL/trigger/trigger.d \
 main.d \
 MCAL/dio/dio.d \
@@ -104,6 +109,7 @@ MCAL/uart/uart.d
 C_DEPS_AS_ARGS +=  \
 APP/app.d \
 ECUAL/eeprom/eeprom.d \
+ECUAL/lcd/LCD.d \
 ECUAL/trigger/trigger.d \
 main.d \
 MCAL/dio/dio.d \
@@ -134,6 +140,13 @@ APP/app.o: ../APP/app.c
 	
 
 ECUAL/eeprom/eeprom.o: ../ECUAL/eeprom/eeprom.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+ECUAL/lcd/LCD.o: ../ECUAL/lcd/LCD.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32a -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32a" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
