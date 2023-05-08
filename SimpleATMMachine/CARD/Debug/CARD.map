@@ -380,7 +380,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000     0x1008
+.text           0x00000000     0x102a
  *(.vectors)
  .vectors       0x00000000       0x54 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
                 0x00000000                __vector_default
@@ -467,134 +467,134 @@ END GROUP
                 0x0000012e       0x50 APP/app.o
                 0x0000012e                APP_checkEEPROM
  .text.APP_superLoop
-                0x0000017e      0x356 APP/app.o
+                0x0000017e      0x38a APP/app.o
                 0x0000017e                APP_superLoop
  .text.EEPROM_init
-                0x000004d4        0x6 ECUAL/eeprom/eeprom.o
-                0x000004d4                EEPROM_init
+                0x00000508        0x6 ECUAL/eeprom/eeprom.o
+                0x00000508                EEPROM_init
  .text.EEPROM_writeByte_256
-                0x000004da       0x5e ECUAL/eeprom/eeprom.o
-                0x000004da                EEPROM_writeByte_256
+                0x0000050e       0x5e ECUAL/eeprom/eeprom.o
+                0x0000050e                EEPROM_writeByte_256
  .text.EEPROM_readByte_256
-                0x00000538       0x74 ECUAL/eeprom/eeprom.o
-                0x00000538                EEPROM_readByte_256
+                0x0000056c       0x74 ECUAL/eeprom/eeprom.o
+                0x0000056c                EEPROM_readByte_256
  .text.EEPROM_writeString_256
-                0x000005ac       0x4a ECUAL/eeprom/eeprom.o
-                0x000005ac                EEPROM_writeString_256
+                0x000005e0       0x4a ECUAL/eeprom/eeprom.o
+                0x000005e0                EEPROM_writeString_256
  .text.EEPROM_readString_256
-                0x000005f6       0x52 ECUAL/eeprom/eeprom.o
-                0x000005f6                EEPROM_readString_256
+                0x0000062a       0x52 ECUAL/eeprom/eeprom.o
+                0x0000062a                EEPROM_readString_256
  .text.LCD_WriteIns
-                0x00000648       0xe2 ECUAL/lcd/LCD.o
+                0x0000067c       0xe2 ECUAL/lcd/LCD.o
  .text.LCD_Init
-                0x0000072a       0x3c ECUAL/lcd/LCD.o
-                0x0000072a                LCD_Init
+                0x0000075e       0x3c ECUAL/lcd/LCD.o
+                0x0000075e                LCD_Init
  .text.LCD_PinsInit
-                0x00000766       0x52 ECUAL/lcd/LCD.o
-                0x00000766                LCD_PinsInit
+                0x0000079a       0x52 ECUAL/lcd/LCD.o
+                0x0000079a                LCD_PinsInit
  .text.TRIGGER_init
-                0x000007b8        0xc ECUAL/trigger/trigger.o
-                0x000007b8                TRIGGER_init
+                0x000007ec        0xc ECUAL/trigger/trigger.o
+                0x000007ec                TRIGGER_init
  .text.TRIGGER_triggerMCU
-                0x000007c4       0x24 ECUAL/trigger/trigger.o
-                0x000007c4                TRIGGER_triggerMCU
- .text.main     0x000007e8        0xa main.o
-                0x000007e8                main
+                0x000007f8       0x24 ECUAL/trigger/trigger.o
+                0x000007f8                TRIGGER_triggerMCU
+ .text.main     0x0000081c        0xa main.o
+                0x0000081c                main
  .text.DIO_init
-                0x000007f2      0x116 MCAL/dio/dio.o
-                0x000007f2                DIO_init
+                0x00000826      0x116 MCAL/dio/dio.o
+                0x00000826                DIO_init
  .text.DIO_write
-                0x00000908      0x116 MCAL/dio/dio.o
-                0x00000908                DIO_write
+                0x0000093c      0x116 MCAL/dio/dio.o
+                0x0000093c                DIO_write
  .text.I2C_getStatus
-                0x00000a1e        0x8 MCAL/i2c/i2c.o
-                0x00000a1e                I2C_getStatus
+                0x00000a52        0x8 MCAL/i2c/i2c.o
+                0x00000a52                I2C_getStatus
  .text.I2C_addressWrite
-                0x00000a26        0x8 MCAL/i2c/i2c.o
-                0x00000a26                I2C_addressWrite
+                0x00000a5a        0x8 MCAL/i2c/i2c.o
+                0x00000a5a                I2C_addressWrite
  .text.I2C_addressRead
-                0x00000a2e        0xa MCAL/i2c/i2c.o
-                0x00000a2e                I2C_addressRead
+                0x00000a62        0xa MCAL/i2c/i2c.o
+                0x00000a62                I2C_addressRead
  .text.I2C_WriteData
-                0x00000a38       0x18 MCAL/i2c/i2c.o
-                0x00000a38                I2C_WriteData
+                0x00000a6c       0x18 MCAL/i2c/i2c.o
+                0x00000a6c                I2C_WriteData
  .text.I2C_readWithACK
-                0x00000a50       0x16 MCAL/i2c/i2c.o
-                0x00000a50                I2C_readWithACK
+                0x00000a84       0x16 MCAL/i2c/i2c.o
+                0x00000a84                I2C_readWithACK
  .text.I2C_readWithNACK
-                0x00000a66       0x16 MCAL/i2c/i2c.o
-                0x00000a66                I2C_readWithNACK
+                0x00000a9a       0x16 MCAL/i2c/i2c.o
+                0x00000a9a                I2C_readWithNACK
  .text.I2C_init
-                0x00000a7c       0x1e MCAL/i2c/i2c.o
-                0x00000a7c                I2C_init
+                0x00000ab0       0x1e MCAL/i2c/i2c.o
+                0x00000ab0                I2C_init
  .text.I2C_start
-                0x00000a9a       0x20 MCAL/i2c/i2c.o
-                0x00000a9a                I2C_start
+                0x00000ace       0x20 MCAL/i2c/i2c.o
+                0x00000ace                I2C_start
  .text.I2C_repeated_start
-                0x00000aba       0x20 MCAL/i2c/i2c.o
-                0x00000aba                I2C_repeated_start
+                0x00000aee       0x20 MCAL/i2c/i2c.o
+                0x00000aee                I2C_repeated_start
  .text.I2C_address_select
-                0x00000ada       0x56 MCAL/i2c/i2c.o
-                0x00000ada                I2C_address_select
+                0x00000b0e       0x56 MCAL/i2c/i2c.o
+                0x00000b0e                I2C_address_select
  .text.I2C_data_rw
-                0x00000b30       0x66 MCAL/i2c/i2c.o
-                0x00000b30                I2C_data_rw
+                0x00000b64       0x66 MCAL/i2c/i2c.o
+                0x00000b64                I2C_data_rw
  .text.I2C_stop
-                0x00000b96       0x12 MCAL/i2c/i2c.o
-                0x00000b96                I2C_stop
+                0x00000bca       0x12 MCAL/i2c/i2c.o
+                0x00000bca                I2C_stop
  .text.SPI_initMaster
-                0x00000ba8       0x52 MCAL/spi/spi.o
-                0x00000ba8                SPI_initMaster
+                0x00000bdc       0x40 MCAL/spi/spi.o
+                0x00000bdc                SPI_initMaster
  .text.SPI_startTransmission
-                0x00000bfa        0xc MCAL/spi/spi.o
-                0x00000bfa                SPI_startTransmission
+                0x00000c1c        0xc MCAL/spi/spi.o
+                0x00000c1c                SPI_startTransmission
  .text.SPI_transmitByte
-                0x00000c06        0xa MCAL/spi/spi.o
-                0x00000c06                SPI_transmitByte
+                0x00000c28        0xa MCAL/spi/spi.o
+                0x00000c28                SPI_transmitByte
  .text.TIMER_init
-                0x00000c10       0x4c MCAL/timer/timer.o
-                0x00000c10                TIMER_init
+                0x00000c32       0x4c MCAL/timer/timer.o
+                0x00000c32                TIMER_init
  .text.TIMER_start
-                0x00000c5c       0x40 MCAL/timer/timer.o
-                0x00000c5c                TIMER_start
+                0x00000c7e       0x40 MCAL/timer/timer.o
+                0x00000c7e                TIMER_start
  .text.TIMER_stopInterrupt
-                0x00000c9c       0x2a MCAL/timer/timer.o
-                0x00000c9c                TIMER_stopInterrupt
+                0x00000cbe       0x2a MCAL/timer/timer.o
+                0x00000cbe                TIMER_stopInterrupt
  .text.TIMER_enableInterrupt
-                0x00000cc6       0x1e MCAL/timer/timer.o
-                0x00000cc6                TIMER_enableInterrupt
+                0x00000ce8       0x1e MCAL/timer/timer.o
+                0x00000ce8                TIMER_enableInterrupt
  .text.TIMER_delay
-                0x00000ce4       0xac MCAL/timer/timer.o
-                0x00000ce4                TIMER_delay
+                0x00000d06       0xac MCAL/timer/timer.o
+                0x00000d06                TIMER_delay
  .text.__vector_11
-                0x00000d90      0x122 MCAL/timer/timer.o
-                0x00000d90                __vector_11
+                0x00000db2      0x122 MCAL/timer/timer.o
+                0x00000db2                __vector_11
  .text.__vector_5
-                0x00000eb2       0xaa MCAL/timer/timer.o
-                0x00000eb2                __vector_5
+                0x00000ed4       0xaa MCAL/timer/timer.o
+                0x00000ed4                __vector_5
  .text.UART_Init
-                0x00000f5c       0x30 MCAL/uart/uart.o
-                0x00000f5c                UART_Init
+                0x00000f7e       0x30 MCAL/uart/uart.o
+                0x00000f7e                UART_Init
  .text.UART_SendChar
-                0x00000f8c        0x8 MCAL/uart/uart.o
-                0x00000f8c                UART_SendChar
+                0x00000fae        0x8 MCAL/uart/uart.o
+                0x00000fae                UART_SendChar
  .text.UART_GetChar
-                0x00000f94        0x8 MCAL/uart/uart.o
-                0x00000f94                UART_GetChar
+                0x00000fb6        0x8 MCAL/uart/uart.o
+                0x00000fb6                UART_GetChar
  .text.UART_sendString
-                0x00000f9c       0x34 MCAL/uart/uart.o
-                0x00000f9c                UART_sendString
+                0x00000fbe       0x34 MCAL/uart/uart.o
+                0x00000fbe                UART_sendString
  .text.libgcc.mul
-                0x00000fd0       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
-                0x00000fd0                __umulhisi3
+                0x00000ff2       0x1e c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_umulhisi3.o)
+                0x00000ff2                __umulhisi3
  .text.libgcc.mul
-                0x00000fee       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
-                0x00000fee                __muluhisi3
-                0x00001004                . = ALIGN (0x2)
+                0x00001010       0x16 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_muluhisi3.o)
+                0x00001010                __muluhisi3
+                0x00001026                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00001004        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
-                0x00001004                _exit
-                0x00001004                exit
+ .fini9         0x00001026        0x0 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+                0x00001026                _exit
+                0x00001026                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -613,11 +613,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00001004        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
+ .fini0         0x00001026        0x4 c:/program files (x86)/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr5\libgcc.a(_exit.o)
  *(.fini0)
-                0x00001008                _etext = .
+                0x0000102a                _etext = .
 
-.data           0x00800060       0xe2 load address 0x00001008
+.data           0x00800060       0xe2 load address 0x0000102a
                 0x00800060                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -673,8 +673,8 @@ END GROUP
                 0x0080015f                u16_g_onTime
                 0x00800161                u16_g_offTime
                 0x00800163                PROVIDE (__bss_end, .)
-                0x00001008                __data_load_start = LOADADDR (.data)
-                0x000010ea                __data_load_end = (__data_load_start + SIZEOF (.data))
+                0x0000102a                __data_load_start = LOADADDR (.data)
+                0x0000110c                __data_load_end = (__data_load_start + SIZEOF (.data))
 
 .noinit         0x00800163        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
@@ -780,19 +780,19 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x3537
+.debug_info     0x00000000     0x35a5
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0x4e6 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_info    0x000004e6      0xbc8 APP/app.o
- .debug_info    0x000010ae      0x727 ECUAL/eeprom/eeprom.o
- .debug_info    0x000017d5      0xa3e ECUAL/lcd/LCD.o
- .debug_info    0x00002213      0x135 ECUAL/trigger/trigger.o
- .debug_info    0x00002348       0xb5 main.o
- .debug_info    0x000023fd      0x253 MCAL/dio/dio.o
- .debug_info    0x00002650      0x344 MCAL/i2c/i2c.o
- .debug_info    0x00002994      0x30b MCAL/spi/spi.o
- .debug_info    0x00002c9f      0x67a MCAL/timer/timer.o
- .debug_info    0x00003319      0x21e MCAL/uart/uart.o
+ .debug_info    0x000004e6      0xc36 APP/app.o
+ .debug_info    0x0000111c      0x727 ECUAL/eeprom/eeprom.o
+ .debug_info    0x00001843      0xa3e ECUAL/lcd/LCD.o
+ .debug_info    0x00002281      0x135 ECUAL/trigger/trigger.o
+ .debug_info    0x000023b6       0xb5 main.o
+ .debug_info    0x0000246b      0x253 MCAL/dio/dio.o
+ .debug_info    0x000026be      0x344 MCAL/i2c/i2c.o
+ .debug_info    0x00002a02      0x30b MCAL/spi/spi.o
+ .debug_info    0x00002d0d      0x67a MCAL/timer/timer.o
+ .debug_info    0x00003387      0x21e MCAL/uart/uart.o
 
 .debug_abbrev   0x00000000     0x1002
  *(.debug_abbrev)
@@ -811,14 +811,14 @@ END GROUP
 .debug_line     0x00000000     0x1ef2
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_line    0x00000116      0x5ed APP/app.o
- .debug_line    0x00000703      0x3fa ECUAL/eeprom/eeprom.o
- .debug_line    0x00000afd      0x3f9 ECUAL/lcd/LCD.o
- .debug_line    0x00000ef6       0xc6 ECUAL/trigger/trigger.o
- .debug_line    0x00000fbc       0x57 main.o
- .debug_line    0x00001013      0x3d8 MCAL/dio/dio.o
- .debug_line    0x000013eb      0x2f2 MCAL/i2c/i2c.o
- .debug_line    0x000016dd      0x1cc MCAL/spi/spi.o
+ .debug_line    0x00000116      0x5ff APP/app.o
+ .debug_line    0x00000715      0x3fa ECUAL/eeprom/eeprom.o
+ .debug_line    0x00000b0f      0x3f9 ECUAL/lcd/LCD.o
+ .debug_line    0x00000f08       0xc6 ECUAL/trigger/trigger.o
+ .debug_line    0x00000fce       0x57 main.o
+ .debug_line    0x00001025      0x3d8 MCAL/dio/dio.o
+ .debug_line    0x000013fd      0x2f2 MCAL/i2c/i2c.o
+ .debug_line    0x000016ef      0x1ba MCAL/spi/spi.o
  .debug_line    0x000018a9      0x47c MCAL/timer/timer.o
  .debug_line    0x00001d25      0x1cd MCAL/uart/uart.o
 
@@ -835,28 +835,28 @@ END GROUP
  .debug_frame   0x0000059c      0x180 MCAL/timer/timer.o
  .debug_frame   0x0000071c       0x90 MCAL/uart/uart.o
 
-.debug_str      0x00000000      0xcdf
+.debug_str      0x00000000      0xd3f
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x350 APP/app.o
-                                0x38b (size before relaxing)
- .debug_str     0x000004e6      0x235 ECUAL/eeprom/eeprom.o
+ .debug_str     0x00000196      0x367 APP/app.o
+                                0x3a2 (size before relaxing)
+ .debug_str     0x000004fd      0x27e ECUAL/eeprom/eeprom.o
                                 0x412 (size before relaxing)
- .debug_str     0x0000071b       0xf4 ECUAL/lcd/LCD.o
+ .debug_str     0x0000077b       0xf4 ECUAL/lcd/LCD.o
                                 0x295 (size before relaxing)
- .debug_str     0x0000080f       0x1b ECUAL/trigger/trigger.o
+ .debug_str     0x0000086f       0x1b ECUAL/trigger/trigger.o
                                 0x1ad (size before relaxing)
- .debug_str     0x0000082a       0x11 main.o
+ .debug_str     0x0000088a       0x11 main.o
                                 0x17b (size before relaxing)
- .debug_str     0x0000083b       0xd6 MCAL/dio/dio.o
+ .debug_str     0x0000089b       0xd6 MCAL/dio/dio.o
                                 0x242 (size before relaxing)
- .debug_str     0x00000911       0x98 MCAL/i2c/i2c.o
+ .debug_str     0x00000971       0x98 MCAL/i2c/i2c.o
                                 0x336 (size before relaxing)
- .debug_str     0x000009a9       0x91 MCAL/spi/spi.o
-                                0x232 (size before relaxing)
- .debug_str     0x00000a3a      0x26c MCAL/timer/timer.o
+ .debug_str     0x00000a09       0x91 MCAL/spi/spi.o
+                                0x249 (size before relaxing)
+ .debug_str     0x00000a9a      0x26c MCAL/timer/timer.o
                                 0x431 (size before relaxing)
- .debug_str     0x00000ca6       0x39 MCAL/uart/uart.o
+ .debug_str     0x00000d06       0x39 MCAL/uart/uart.o
                                 0x204 (size before relaxing)
 
 .debug_loc      0x00000000     0x20a6

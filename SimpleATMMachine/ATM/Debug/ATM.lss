@@ -19,15 +19,15 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
   7 .debug_abbrev 0000117c  00000000  00000000  00007081  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   00002544  00000000  00000000  000081fd  2**0
+  8 .debug_line   00002532  00000000  00000000  000081fd  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000007c0  00000000  00000000  0000a744  2**2
+  9 .debug_frame  000007c0  00000000  00000000  0000a730  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000ee1  00000000  00000000  0000af04  2**0
+ 10 .debug_str    00000f40  00000000  00000000  0000aef0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00002776  00000000  00000000  0000bde5  2**0
+ 11 .debug_loc    00002776  00000000  00000000  0000be30  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000278  00000000  00000000  0000e55b  2**0
+ 12 .debug_ranges 00000278  00000000  00000000  0000e5a6  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -638,7 +638,7 @@ void APP_superLoop (void)
      362:	0e 94 cd 0d 	call	0x1b9a	; 0x1b9a <TIMER_delay>
 			
 			counter = 0;
-			while (SPI_transmitByte(0x55) == 0)
+			while (SPI_transmitByte(0xDD) != 0xDD)
      366:	07 c0       	rjmp	.+14     	; 0x376 <APP_superLoop+0x220>
 			TIMER_delay(TIMER_2,10);
      368:	4a e0       	ldi	r20, 0x0A	; 10
@@ -652,11 +652,11 @@ void APP_superLoop (void)
 			TIMER_delay(TIMER_2,1000);
 			
 			counter = 0;
-			while (SPI_transmitByte(0x55) == 0)
-     376:	85 e5       	ldi	r24, 0x55	; 85
+			while (SPI_transmitByte(0xDD) != 0xDD)
+     376:	8d ed       	ldi	r24, 0xDD	; 221
      378:	0e 94 7a 0c 	call	0x18f4	; 0x18f4 <SPI_transmitByte>
-     37c:	88 23       	and	r24, r24
-     37e:	a1 f3       	breq	.-24     	; 0x368 <APP_superLoop+0x212>
+     37c:	8d 3d       	cpi	r24, 0xDD	; 221
+     37e:	a1 f7       	brne	.-24     	; 0x368 <APP_superLoop+0x212>
      380:	10 e0       	ldi	r17, 0x00	; 0
      382:	12 c0       	rjmp	.+36     	; 0x3a8 <APP_superLoop+0x252>
 			TIMER_delay(TIMER_2,10);
@@ -693,7 +693,7 @@ void APP_superLoop (void)
      3a4:	0e 94 cd 0d 	call	0x1b9a	; 0x1b9a <TIMER_delay>
 			
 			counter = 0;
-			while (SPI_transmitByte(0x55) == 0)
+			while (SPI_transmitByte(0xDD) != 0xDD)
 			TIMER_delay(TIMER_2,10);
 			
 			while (counter < 20)
@@ -716,7 +716,7 @@ void APP_superLoop (void)
 			counter = 0;
 			byteReceived = 255;
 			
-			while (SPI_transmitByte(0x55) == 0)
+			while (SPI_transmitByte(0xDD) != 0xDD)
      3ba:	07 c0       	rjmp	.+14     	; 0x3ca <APP_superLoop+0x274>
 			TIMER_delay(TIMER_2,10);
      3bc:	4a e0       	ldi	r20, 0x0A	; 10
@@ -730,14 +730,15 @@ void APP_superLoop (void)
 			counter = 0;
 			byteReceived = 255;
 			
-			while (SPI_transmitByte(0x55) == 0)
-     3ca:	85 e5       	ldi	r24, 0x55	; 85
+			while (SPI_transmitByte(0xDD) != 0xDD)
+     3ca:	8d ed       	ldi	r24, 0xDD	; 221
      3cc:	0e 94 7a 0c 	call	0x18f4	; 0x18f4 <SPI_transmitByte>
-     3d0:	88 23       	and	r24, r24
-     3d2:	a1 f3       	breq	.-24     	; 0x3bc <APP_superLoop+0x266>
+     3d0:	8d 3d       	cpi	r24, 0xDD	; 221
+     3d2:	a1 f7       	brne	.-24     	; 0x3bc <APP_superLoop+0x266>
      3d4:	10 e0       	ldi	r17, 0x00	; 0
      3d6:	12 c0       	rjmp	.+36     	; 0x3fc <APP_superLoop+0x2a6>
 			TIMER_delay(TIMER_2,10);
+			
 			
 			while (counter < 5)
 			{
@@ -769,10 +770,10 @@ void APP_superLoop (void)
      3f4:	70 e0       	ldi	r23, 0x00	; 0
      3f6:	82 e0       	ldi	r24, 0x02	; 2
      3f8:	0e 94 cd 0d 	call	0x1b9a	; 0x1b9a <TIMER_delay>
-			byteReceived = 255;
 			
-			while (SPI_transmitByte(0x55) == 0)
+			while (SPI_transmitByte(0xDD) != 0xDD)
 			TIMER_delay(TIMER_2,10);
+			
 			
 			while (counter < 5)
      3fc:	15 30       	cpi	r17, 0x05	; 5

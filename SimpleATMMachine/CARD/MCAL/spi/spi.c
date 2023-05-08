@@ -17,10 +17,9 @@ void SPI_initMaster(void)
 	SET_BIT(SPCR,SPE);
 	SET_BIT(SPCR,MSTR);
 	
-	CLR_BIT(SPSR, SPI2X);
-	
-	SET_BIT(SPCR,SPR0);
-	SET_BIT(SPCR,SPR1);
+	//CLR_BIT(SPSR, SPI2X);
+	//SET_BIT(SPCR,SPR0);
+	//SET_BIT(SPCR,SPR1);
 
 }
 void SPI_initSlave(void)

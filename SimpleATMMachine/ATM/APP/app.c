@@ -174,7 +174,7 @@ void APP_superLoop (void)
 			TIMER_delay(TIMER_2,1000);
 			
 			counter = 0;
-			while (SPI_transmitByte(0x55) == 0)
+			while (SPI_transmitByte(0xDD) != 0xDD)
 			TIMER_delay(TIMER_2,10);
 			
 			while (counter < 20)
@@ -202,8 +202,9 @@ void APP_superLoop (void)
 			counter = 0;
 			byteReceived = 255;
 			
-			while (SPI_transmitByte(0x55) == 0)
+			while (SPI_transmitByte(0xDD) != 0xDD)
 			TIMER_delay(TIMER_2,10);
+			
 			
 			while (counter < 5)
 			{

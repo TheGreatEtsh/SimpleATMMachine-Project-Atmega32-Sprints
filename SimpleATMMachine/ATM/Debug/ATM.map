@@ -122,7 +122,7 @@ Discarded input sections
  .data          0x00000000        0x0 MCAL/spi/spi.o
  .bss           0x00000000        0x0 MCAL/spi/spi.o
  .text.SPI_initMaster
-                0x00000000       0x52 MCAL/spi/spi.o
+                0x00000000       0x40 MCAL/spi/spi.o
  .text.SPI_startTransmission
                 0x00000000        0xc MCAL/spi/spi.o
  .text.SPI_stopTransmission
@@ -1009,7 +1009,7 @@ END GROUP
  .debug_abbrev  0x00000e51      0x139 MCAL/spi/spi.o
  .debug_abbrev  0x00000f8a      0x1f2 MCAL/timer/timer.o
 
-.debug_line     0x00000000     0x2544
+.debug_line     0x00000000     0x2532
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x116 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
  .debug_line    0x00000116      0xbdb APP/app.o
@@ -1021,8 +1021,8 @@ END GROUP
  .debug_line    0x000018ea       0x57 main.o
  .debug_line    0x00001941      0x3d8 MCAL/dio/dio.o
  .debug_line    0x00001d19      0x1bf MCAL/extint/extint.o
- .debug_line    0x00001ed8      0x1e4 MCAL/spi/spi.o
- .debug_line    0x000020bc      0x488 MCAL/timer/timer.o
+ .debug_line    0x00001ed8      0x1d2 MCAL/spi/spi.o
+ .debug_line    0x000020aa      0x488 MCAL/timer/timer.o
 
 .debug_frame    0x00000000      0x7c0
  *(.debug_frame)
@@ -1038,30 +1038,30 @@ END GROUP
  .debug_frame   0x00000594       0xac MCAL/spi/spi.o
  .debug_frame   0x00000640      0x180 MCAL/timer/timer.o
 
-.debug_str      0x00000000      0xee1
+.debug_str      0x00000000      0xf40
  *(.debug_str)
  .debug_str     0x00000000      0x196 C:/Program Files (x86)/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.6.364/gcc/dev/atmega32a/avr5/crtatmega32a.o
- .debug_str     0x00000196      0x484 APP/app.o
-                                0x4b7 (size before relaxing)
- .debug_str     0x0000061a      0x216 APP/server.o
+ .debug_str     0x00000196      0x49b APP/app.o
+                                0x4ce (size before relaxing)
+ .debug_str     0x00000631      0x25e APP/server.o
                                 0x44c (size before relaxing)
- .debug_str     0x00000830       0xa8 ECUAL/button/button.o
+ .debug_str     0x0000088f       0xa8 ECUAL/button/button.o
                                 0x21b (size before relaxing)
- .debug_str     0x000008d8       0x90 ECUAL/buzzer/buzzer.o
+ .debug_str     0x00000937       0x90 ECUAL/buzzer/buzzer.o
                                 0x225 (size before relaxing)
- .debug_str     0x00000968       0x5b ECUAL/keypad/keypad.o
+ .debug_str     0x000009c7       0x5b ECUAL/keypad/keypad.o
                                 0x1f6 (size before relaxing)
- .debug_str     0x000009c3       0xbe ECUAL/lcd/LCD.o
+ .debug_str     0x00000a22       0xbe ECUAL/lcd/LCD.o
                                 0x294 (size before relaxing)
- .debug_str     0x00000a81       0x11 main.o
+ .debug_str     0x00000ae0       0x11 main.o
                                 0x183 (size before relaxing)
- .debug_str     0x00000a92       0xb4 MCAL/dio/dio.o
+ .debug_str     0x00000af1       0xb4 MCAL/dio/dio.o
                                 0x241 (size before relaxing)
- .debug_str     0x00000b46       0xe5 MCAL/extint/extint.o
+ .debug_str     0x00000ba5       0xe5 MCAL/extint/extint.o
                                 0x264 (size before relaxing)
- .debug_str     0x00000c2b       0x9d MCAL/spi/spi.o
-                                0x24e (size before relaxing)
- .debug_str     0x00000cc8      0x219 MCAL/timer/timer.o
+ .debug_str     0x00000c8a       0x9d MCAL/spi/spi.o
+                                0x265 (size before relaxing)
+ .debug_str     0x00000d27      0x219 MCAL/timer/timer.o
                                 0x430 (size before relaxing)
 
 .debug_loc      0x00000000     0x2776
