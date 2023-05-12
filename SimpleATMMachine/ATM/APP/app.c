@@ -235,11 +235,11 @@ void APP_superLoop (void)
 			}
 			cardHolderData.PIN[5] = 0;
 			
-			LCD_Clear();
-			LCD_WriteString(cardHolderData.primaryAcountNumber);
-			LCD_SetCursor(1,0);
-			LCD_WriteString(cardHolderData.PIN);
-			TIMER_delay(TIMER_2, 5000);
+			//LCD_Clear();
+			//LCD_WriteString(cardHolderData.primaryAcountNumber);
+			//LCD_SetCursor(1,0);
+			//LCD_WriteString(cardHolderData.PIN);
+			//TIMER_delay(TIMER_2, 5000);
 			
 			
 			atmState = PIN_STATE;
