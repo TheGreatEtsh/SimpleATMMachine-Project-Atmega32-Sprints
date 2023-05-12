@@ -182,8 +182,11 @@ void APP_superLoop (void)
 				byteReceived  = SPI_transmitByte(0xBB);
 				if (byteReceived >= '0' || byteReceived <= '9')
 				{
-					
-					cardHolderData.primaryAcountNumber[counter] = byteReceived;
+					if (counter)
+					{
+						cardHolderData.primaryAcountNumber[counter-1] = byteReceived;
+						
+					}
 					counter++;
 					
 				}
@@ -212,7 +215,11 @@ void APP_superLoop (void)
 				if (byteReceived >= '0' || byteReceived <= '9')
 				{
 
-					cardHolderData.PIN[counter] = byteReceived;
+					if (counter)
+					{
+						cardHolderData.PIN[counter-1] = byteReceived;
+						
+					}
 					counter++;
 					
 				}
@@ -228,11 +235,11 @@ void APP_superLoop (void)
 			}
 			cardHolderData.PIN[5] = 0;
 			
-			//LCD_Clear();
-			//LCD_WriteString(cardHolderData.primaryAcountNumber);
-			//LCD_SetCursor(1,0);
-			//LCD_WriteString(cardHolderData.PIN);
-			//TIMER_delay(TIMER_2, 1000);
+			LCD_Clear();
+			LCD_WriteString(cardHolderData.primaryAcountNumber);
+			LCD_SetCursor(1,0);
+			LCD_WriteString(cardHolderData.PIN);
+			TIMER_delay(TIMER_2, 5000);
 			
 			
 			atmState = PIN_STATE;
