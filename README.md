@@ -23,10 +23,10 @@
   </p>
 </div>
 
-    > - `CARD ECU Hex` 👉 [CARD_ECU.hex](Simulation/hex/CARD_ECU.hex)
+   
 ### Proiect_map
 
-    | card.hex     |> - > - `CARD ECU Hex` 👉 [CARD_ECU.hex](Simulation/hex/CARD_ECU.hex)       |
+    | card.hex     |     <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/Documents"><strong>CARD ECU Hex »</strong></a>      |
     | atm.hex      | Never                             |
     | simukation   | At every shell prompt             |
     | video        | Whenever the directory is changed |
