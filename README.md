@@ -30,13 +30,13 @@
 <table style="border: none">
   <tr>
   <td width="30%" valign="top">
-## Link
+<h3 align="center">link</h3>
   </td>
   <td width="30%" valign="top">
 ## Link
   </td> 
    <td width="30%" valign="top">
-## **Link**
+## Link
   </td>
   </tr> 
     <tr>
