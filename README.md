@@ -20,7 +20,7 @@
    
  # Proiect_map
 
->| **File**                 | Link                                         | Description                                     |
+>| __File__                 | Link                                         | Description                                     |
 >| --------------------- | -------------------------------------------- | ----------------------------------------------- |
 >| card.hex              | [CARD_ECU.hex]                               | Description Description Description             |
 >| atm.hex               | [CARD_ECU.hex]                               | Description Description Description             |
