@@ -25,7 +25,7 @@
 
  # Proiect_map
 
-| Application           | Description                                  | Plugin                     |
+| File           | Link                                  | Description                     |
 | --------------------- | -------------------------------------------- | -------------------------- |
 | card.hex              | [CARD_ECU.hex]                               | [clink-zoxide]             |
 | atm.hex               | [CARD_ECU.hex]                               | [zoxide.el]                |
