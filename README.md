@@ -26,7 +26,9 @@
    
 ### Proiect_map
 
-    | card.hex     |     <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/Documents"><strong>CARD ECU Hex »</strong></a>      |
+    | card.hex     |        <br />
+    <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/Documents"><strong>Explore the docs »</strong></a>
+    <br />      |
     | atm.hex      | Never                             |
     | simukation   | At every shell prompt             |
     | video        | Whenever the directory is changed |
