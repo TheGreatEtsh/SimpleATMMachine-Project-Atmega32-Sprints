@@ -7,7 +7,7 @@
      <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="[https://github.com/github_username/repo_name](https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints)">
     <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
 <h3 align="center">Simple ATM Machine</h3>
