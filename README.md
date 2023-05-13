@@ -5,7 +5,7 @@
     - Ahmed Mohamed Hesham
     - Ahmed Atef
 
-   
+   | card.hex     |[CARD_ECU.hex](ProteusDesign/CARD.hex)                          
 ### Proiect_map
 
     | card.hex     |[CARD_ECU.hex](ProteusDesign/CARD.hex)                             |
