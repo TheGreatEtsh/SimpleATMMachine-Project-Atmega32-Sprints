@@ -41,4 +41,4 @@
 
 
 ## Proteus Simulation
-![Proteus Simulation](logo2.jpg)
+![Proteus Simulation](I2C.PNG)
