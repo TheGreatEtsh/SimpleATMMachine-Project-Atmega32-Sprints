@@ -1,9 +1,9 @@
 # SimpleATMMachine-Project-Atmega32-Sprints 
   
 # Team Members
->  - [![MomenHassan](https://img.shields.io/static/v1?label=&message=MomenHassan&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
->  - [![AhmedHesham](https://img.shields.io/static/v1?label=&message=AhmedHesham&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]([https://github.com/ahmedatef1496](https://github.com/TheGreatEtsh))
->  - [![AhmedAtef  ](https://img.shields.io/static/v1?label=&message=AhmedAtef&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]([https://github.com/ahmedatef1496](https://github.com/MomenHassan12))
+>  - [![MomenHassan](https://img.shields.io/static/v1?label=&message=MomenHassan&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/MomenHassan12)
+>  - [![AhmedHesham](https://img.shields.io/static/v1?label=&message=AhmedHesham&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/TheGreatEtsh)
+>  - [![AhmedAtef  ](https://img.shields.io/static/v1?label=&message=AhmedAtef&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
    
  # Proiect_map
 | File                  | Link                                                                           
