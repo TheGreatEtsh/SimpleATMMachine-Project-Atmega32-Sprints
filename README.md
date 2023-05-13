@@ -22,27 +22,11 @@
  | File                  | Link                                         | Description                                     |
 | --------------------- | -------------------------------------------- | ----------------------------------------------- |
 | card.hex              | [CARD_ECU.hex](ProteusDesign/CARD.hex)                              | Description Description Description             |
-| atm.hex               | [CARD_ECU.hex]                               | Description Description Description             |
+| atm.hex               | [ATM_ECU.hex](ProteusDesign/ATM.hex)                              | Description Description Description             |
 | Simulation            | [Simulation]                                 | Description Description Description             |
-| video                 | [video]                                      | Description Description Description             |
+| video                 |[video](https://drive.google.com/file/d/1yPFWNEK8L4eZLI80DzdInBjXKycOUTue/view)                                     | Description Description Description             |
 
 
-
-
- # Proiect_map
- 
-| Name                  | Description                                                |
-| ---------------------------------|--------------------------------------------------------------- |
-| _[Repository Readme Generator](https://github.com/KasRoudra/repository-readme-generator)_            | Generate a beautiful Readme.md for your repository.             |
-| _[PyPhisher](https://github.com/KasRoudra/pyphisher)_                          | Ultimate phishing tool in python with 64 website templates.     |
-| _[YT-Downloader](https://github.com/KasRoudra/YT-Downloader)_                  | Download youtube audio or videos from command line.             |
-| _[MusPlayer](https://github.com/KasRoudra/MusPlayer)_                         | Play music in termux by mpv.                                     |
-
-
-[CARD_ECU.hex]:(ProteusDesign/CARD.hex)
-[CARD_ECU.hex]:(ProteusDesign/ATM.hex)
-[Simulation]:(ProteusDesign/CARD.hex)
-[video]: https://drive.google.com/file/d/1yPFWNEK8L4eZLI80DzdInBjXKycOUTue/view
 
 
 
