@@ -8,10 +8,10 @@
  # Proiect_map
 | File                  | Link                                                                           | Description                                     |
 | --------------------- | ------------------------------------------------------------------------------ | ----------------------------------------------- |
-| card.hex              | [CARD_ECU.hex](ProteusDesign/CARD.hex)                                         | Description Description Description             |
-| atm.hex               | [ATM_ECU.hex](ProteusDesign/ATM.hex)                                           | Description Description Description             |
-| Simulation            | [Simulation]                                                                   | Description Description Description             |
-| video                 | [video](https://drive.google.com/file/d/1yPFWNEK8L4eZLI80DzdInBjXKycOUTue/view)| Description Description Description             |
+| card exe file              | [CARD_ECU.hex](ProteusDesign/CARD.hex)                                         | Description Description Description             |
+| atm  exe file               | [ATM_ECU.hex](ProteusDesign/ATM.hex)                                           | Description Description Description             |
+| Simulation            | [Simulation](https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/ProteusDesign) | Description Description Description             |
+| Project Video                 | [video](https://drive.google.com/file/d/1yPFWNEK8L4eZLI80DzdInBjXKycOUTue/view)| Description Description Description             |
 
 
 
