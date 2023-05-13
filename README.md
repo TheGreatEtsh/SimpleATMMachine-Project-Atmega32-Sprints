@@ -33,3 +33,13 @@
 
 
 [CARD_ECU.hex]:(ProteusDesign/CARD.hex)
+
+
+
+
+
+
+
+
+## Circuit Schematic
+![Proteus Simulation](I2C.PNG)
