@@ -30,24 +30,24 @@
 <table style="border: none">
   <tr>
   <td width="50%" valign="top">
-##File
+
   </td>
   <td width="50%" valign="top">
-##Link
+## Link
   </td> 
    <td width="50%" valign="top">
-##Link
+## Link
   </td>
   </tr> 
     <tr>
   <td width="50%" valign="top">
-##File
+## File
   </td>
   <td width="50%" valign="top">
-##Link
+## Link
   </td> 
    <td width="50%" valign="top">
-##Link
+## Link
   </td>
   </tr>
 </table>
