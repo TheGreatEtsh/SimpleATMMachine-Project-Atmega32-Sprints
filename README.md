@@ -24,7 +24,7 @@
 
 ### Proiect_map
 
-    | card.hex     | Description                       |
+    | card.hex     |> - > - `CARD ECU Hex` 👉 [CARD_ECU.hex](Simulation/hex/CARD_ECU.hex)       |
     | atm.hex      | Never                             |
     | simukation   | At every shell prompt             |
     | video        | Whenever the directory is changed |
