@@ -1,6 +1,7 @@
 # SimpleATMMachine-Project-Atmega32-Sprints 
 - owner : Mighty minds -> sprints-Automotive BC - W11
-- <img align="right" alt="GIF" src="https://owaisnoor.info/blog/wp-content/uploads/2019/03/maxresdefault.jpg" width="400" height="280" />
+  <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints">
+    <img src="logo.png" alt="Logo" width="80" height="80">
 # Team Members
   - [![MomenHassan](https://img.shields.io/static/v1?label=&message=MomenHassan&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
   - [![AhmedHesham](https://img.shields.io/static/v1?label=&message=AhmedHesham&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
