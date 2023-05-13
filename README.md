@@ -1,5 +1,4 @@
 # SimpleATMMachine-Project-Atmega32-Sprints 
-- owner : Mighty minds -> sprints-Automotive BC - W11
 <div align="center">
   <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints">
     <img src="logo.png" alt="Logo" width="80" height="80">
