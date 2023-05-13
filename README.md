@@ -20,9 +20,9 @@
    
  # Proiect_map
 
->| __File__                 | Link                                         | Description                                     |
+>| File                  | Link                                         | Description                                     |
 >| --------------------- | -------------------------------------------- | ----------------------------------------------- |
->| #card.hex              | [CARD_ECU.hex]                               | Description Description Description             |
+>| card.hex              | [CARD_ECU.hex]                               | Description Description Description             |
 >| atm.hex               | [CARD_ECU.hex]                               | Description Description Description             |
 >| Simulation            | [Simulation]                                 | Description Description Description             |
 >| video                 | [video]                                      | Description Description Description             |
