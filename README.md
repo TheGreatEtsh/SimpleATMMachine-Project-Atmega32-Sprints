@@ -4,16 +4,13 @@
   - [![MomenHassan](https://img.shields.io/static/v1?label=&message=MomenHassan&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
   - [![AhmedHesham](https://img.shields.io/static/v1?label=&message=AhmedHesham&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
   - [![AhmedAtef  ](https://img.shields.io/static/v1?label=&message=AhmedAtef&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
-
      <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
     <img src="logo.png" alt="Logo" width="80" height="80">
   </a>
-
 <h3 align="center">Simple ATM Machine</h3>
-
   <p align="center">
     Simple ATM Machine
     <br />
