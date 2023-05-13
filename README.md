@@ -1,10 +1,9 @@
 # SimpleATMMachine-Project-Atmega32-Sprints
 - owner : Mighty minds -> sprints-Automotive BC - W11
 - Team Members->
-  - Momen Hassan
-  - [![ahmedatef](https://img.shields.io/static/v1?label=&message=ahmedatef&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
-    - Ahmed Mohamed Hesham
-    - Ahmed Atef
+  - [![Momen-Hassan](https://img.shields.io/static/v1?label=&message=Momen-Hassan&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
+  - [![Ahmed-Hesham](https://img.shields.io/static/v1?label=&message=Ahmed-Hesham&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
+  - [![Ahmed-Atef](https://img.shields.io/static/v1?label=&message=Ahmed-Atef&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
 
      <!-- PROJECT LOGO -->
 <br />
