@@ -21,3 +21,24 @@
     <br />
   </p>
 </div>
+## Configuration
+
+### Flags
+
+When calling `zoxide init`, the following flags are available:
+
+- `--cmd`
+  - Changes the prefix of the `z` and `zi` commands.
+  - `--cmd j` would change the commands to (`j`, `ji`).
+  - `--cmd cd` would replace the `cd` command (doesn't work on Nushell / POSIX shells).
+- `--hook <HOOK>`
+  - Changes how often zoxide increments a directory's score:
+    | Hook     | Description                       |
+    | -------- | --------------------------------- |
+    | `none`   | Never                             |
+    | `prompt` | At every shell prompt             |
+    | `pwd`    | Whenever the directory is changed |
+- `--no-cmd`
+  - Prevents zoxide from defining the `z` and `zi` commands.
+  - These functions will still be available in your shell as `__zoxide_z` and
+    `__zoxide_zi`, should you choose to redefine them.
