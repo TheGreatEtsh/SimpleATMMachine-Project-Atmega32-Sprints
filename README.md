@@ -22,12 +22,12 @@
 
  # Proiect_map
 
-| File                  | Link                                         | Description                |
-| --------------------- | -------------------------------------------- | -------------------------- |
-| card.hex              | [CARD_ECU.hex]                               | [clink-zoxide]             |
-| atm.hex               | [CARD_ECU.hex]                               | [zoxide.el]                |
-| Simulation            | [Simulation]                                 | Natively supported         |
-| video                 | [video]                                       | Natively supported         |
+| File                  | Link                                         | Description                                     |
+| --------------------- | -------------------------------------------- | ----------------------------------------------- |
+| card.hex              | [CARD_ECU.hex]                               | Description Description Description             |
+| atm.hex               | [CARD_ECU.hex]                               | Description Description Description             |
+| Simulation            | [Simulation]                                 | Description Description Description             |
+| video                 | [video]                                      |Description Description Description              |
 
 
 [CARD_ECU.hex]:(ProteusDesign/CARD.hex)
