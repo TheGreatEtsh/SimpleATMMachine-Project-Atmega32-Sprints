@@ -1,17 +1,4 @@
 # SimpleATMMachine-Project-Atmega32-Sprints 
-<div align="center">
-  <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints">
-    <img src="logo2.jpg" alt="Logo" width="200" height="200">
-  </a>
-<h3 align="center">Simple ATM Machine</h3>
-  <p align="center">
-   Description Description Description
-    <br />
-    <a href="https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/Documents"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-  </p>
-  </div>
   
 # Team Members
 >  - [![MomenHassan](https://img.shields.io/static/v1?label=&message=MomenHassan&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/ahmedatef1496)
