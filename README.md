@@ -25,14 +25,18 @@
 
  # Proiect_map
 
-| File           | Link                                  | Description                     |
+| File                  | Link                                         | Description                |
 | --------------------- | -------------------------------------------- | -------------------------- |
 | card.hex              | [CARD_ECU.hex]                               | [clink-zoxide]             |
 | atm.hex               | [CARD_ECU.hex]                               | [zoxide.el]                |
-| [felix]               | File manager                                 | Natively supported         |
+| Simulation            | [Simulation]                                 | Natively supported         |
+| video                 | [vido]                                       | Natively supported         |
 
 
 [CARD_ECU.hex]:(ProteusDesign/CARD.hex)
+[CARD_ECU.hex]:(ProteusDesign/ATM.hex)
+[Simulation]:(ProteusDesign/CARD.hex)
+[vido]:(https://drive.google.com/file/d/1yPFWNEK8L4eZLI80DzdInBjXKycOUTue/view)
 
 
 
