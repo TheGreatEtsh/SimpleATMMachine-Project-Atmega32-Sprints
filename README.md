@@ -16,7 +16,7 @@
   <p align="center">
     Simple ATM Machine
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/github_username/repo_name](https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/Documents"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
