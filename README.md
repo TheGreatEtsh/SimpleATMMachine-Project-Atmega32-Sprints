@@ -4,12 +4,9 @@
     - Momen Hassan 
     - Ahmed Mohamed Hesham
     - Ahmed Atef
-
-   | card.hex     |[CARD_ECU.hex](ProteusDesign/CARD.hex)                          
-### Proiect_map
-
-    | card.hex     |[CARD_ECU.hex](ProteusDesign/CARD.hex)                             |
-    | atm.hex      | Never                             |
+ # Proiect_map
+   | card.hex     |[CARD_ECU.hex](ProteusDesign/CARD.hex) |                         
+   | atm.hex      |[CARD_ECU.hex](ProteusDesign/ATM.hex)  |                        
     | simukation   | At every shell prompt             |
     | video        | Whenever the directory is changed |
 
