@@ -31,18 +31,12 @@
   <tr>
   <td width="50%" valign="top">
 
-## Let's Work on Your Project Together!
-
-If you have any questions about front-end web development, feel free to <a href="mailto:vishalmaurya3112@gmail.com">contact me through email</a> me.
-
-ff
+## File
 
   </td>
   <td width="50%" valign="top">
 
-## It's not perfect, isn't it?
-
-**<img alt="Feedback" src="https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg">**
+##Link
 
 ll
 
