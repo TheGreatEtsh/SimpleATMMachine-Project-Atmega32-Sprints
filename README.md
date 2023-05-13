@@ -27,32 +27,6 @@
 >| Simulation            | [Simulation]                                 | Description Description Description             |
 >| video                 | [video]                                      | Description Description Description             |
 
-<table style="border: none">
-  <tr>
-  <td width="30%" valign="top">
-<h3 align="center">link</h3>
-  </td>
-  <td width="30%" valign="top">
-## Link
-  </td> 
-   <td width="30%" valign="top">
-## Link
-  </td>
-  </tr> 
-    <tr>
-  <td width="30%" valign="top">
-## File
-  </td>
-  <td width="30%" valign="top">
-## Link
-  </td> 
-   <td width="30%" valign="top">
-## Link
-  </td>
-  </tr>
-</table>
-
-------
 
 [CARD_ECU.hex]:(ProteusDesign/CARD.hex)
 [CARD_ECU.hex]:(ProteusDesign/ATM.hex)
