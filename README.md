@@ -41,5 +41,5 @@
 
 
 
-## Circuit Schematic
+## Proteus Simulation
 ![Proteus Simulation](I2C.PNG)
