@@ -11,7 +11,7 @@
 | card HEX file              | [CARD_ECU.hex](ProteusDesign/CARD.hex)  |                                       
 | atm  HEX  file               | [ATM_ECU.hex](ProteusDesign/ATM.hex) |                                          | 
 | Simulation            | [Simulation](https://github.com/TheGreatEtsh/SimpleATMMachine-Project-Atmega32-Sprints/tree/main/ProteusDesign) |
-| Project Video                 | [video](https://drive.google.com/drive/u/0/folders/1EQI99F08Xs1UB5zKrUr-gYKLT43Ls-Qh)|
+| Project Video                 | [video](https://drive.google.com/file/d/1TTvfqWUVuY80Wet801XQi8lQTfkVMYcd/view?usp=sharing)|
 
 
 
